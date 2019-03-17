@@ -45,7 +45,7 @@
 }
 
 .table-view .column-header-background {
-    -fx-border-width: 0 0.0 1 0;
+    -fx-border-width: 0 0 1 0;
     -fx-border-color: #F3F3F3;
 }
 
@@ -104,4 +104,7 @@
 .text-field{
     -fx-text-alignment: center;
     -fx-alignment: center;
+}
+.table-row-cell:empty{
+    -fx-background-color: white;
 }

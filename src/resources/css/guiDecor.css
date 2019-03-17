@@ -1,6 +1,7 @@
-/*main font style across the gui*/
+/*main font style across the gui, styles the tables as well*/
 .jfx-decorator {
     -fx-decorator-color: #272727;
+    -fx-text-fill: #e6e6e6;
     -fx-font-family: "Roboto Light";
     -fx-font-size: 22;
 }

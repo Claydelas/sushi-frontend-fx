@@ -2,6 +2,9 @@ package comp1206.sushi.server.controllers;
 
 import comp1206.sushi.common.Dish;
 import comp1206.sushi.server.components.NumericTableCell;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,7 +13,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.util.converter.NumberStringConverter;
+import javafx.util.Callback;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,6 +32,8 @@ public class DishesController extends MainViewController implements Initializabl
     private TableColumn<Dish, Number> restockThreshold;
     @FXML
     private TableColumn<Dish, Number> restockAmount;
+    @FXML
+    private TableColumn<Dish, Number> stock;
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
@@ -57,6 +62,9 @@ public class DishesController extends MainViewController implements Initializabl
         restockAmount.setCellValueFactory(new PropertyValueFactory<>("restockAmount"));
         restockAmount.setCellFactory(c -> new NumericTableCell<>(0,0));
         restockAmount.setOnEditCommit(e -> dishesTable.getSelectionModel().getSelectedItem().setRestockAmount(e.getNewValue()));
+
+        //---------------------Stock Column---------------------------------
+        stock.setCellValueFactory(param -> new SimpleIntegerProperty(server.getDishStockLevels().get(param.getValue()).intValue()));
 
         ObservableList<Dish> dishData = FXCollections.observableList(server.getDishes());
         dishesTable.setItems(dishData);
