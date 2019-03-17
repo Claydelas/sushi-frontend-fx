@@ -1,0 +1,39 @@
+.jfx-tab-pane .headers-region {
+    -fx-background-color: rgb(246, 246, 246);
+}
+
+.jfx-tab-pane .tab-header-background {
+    -fx-background-color: rgb(246, 246, 246);
+}
+
+.jfx-tab-pane .tab-selected-line {
+    -fx-stroke: rgb(246, 246, 246);
+}
+
+.jfx-tab-pane .tab-header-area .jfx-rippler {
+    -jfx-rippler-fill: rgb(222, 222, 222);
+}
+
+.tab-selected-line {
+    -fx-background-color: rgb(222, 222, 222);
+}
+
+.jfx-tab-pane .tab:selected
+{
+    -fx-background-color: #3c3c3c;
+}
+
+.tab .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: #828282;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.tab:selected .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: #96b946;
+}
+.label {
+    -fx-text-fill: #FFFFFF;
+}

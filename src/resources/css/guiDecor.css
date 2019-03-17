@@ -1,0 +1,23 @@
+.jfx-decorator {
+    -fx-decorator-color: #272727;
+    -fx-font-family: "Libre Franklin";
+    -fx-font-size: 18;
+    -fx-font-smoothing-type: gray;
+}
+
+.jfx-decorator .jfx-decorator-buttons-container {
+    -fx-background-color: -fx-decorator-color;
+
+}
+
+.jfx-decorator-text {
+    -fx-font-family: "Libre Franklin";
+    -fx-font-size: 26;
+    -fx-font-smoothing-type: gray;
+}
+
+.jfx-decorator .resize-border {
+    -fx-border-color: -fx-decorator-color;
+    -fx-border-width: 2 2 2 2;
+}
+

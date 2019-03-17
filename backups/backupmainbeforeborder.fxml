@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="860.0" stylesheets="@../src/resources/css/globalStyles.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comp1206.sushi.server.controllers.MainViewController">
+    <children>
+        <HBox prefHeight="64.0" prefWidth="860.0" />
+        <VBox fx:id="standardDrawer" layoutY="64.0" prefHeight="611.0" prefWidth="256.0">
+            <children>
+                <JFXButton fx:id="selectOrdersPane" alignment="BASELINE_LEFT" defaultButton="true" prefHeight="64.0" prefWidth="256.0" text="Orders">
+                    <font>
+                        <Font name="LibreFranklin-Regular" size="26.0" />
+                    </font>
+                    <padding>
+                        <Insets left="64.0" />
+                    </padding>
+                </JFXButton>
+                <JFXButton fx:id="selectDishesPane" alignment="BASELINE_LEFT" defaultButton="true" prefHeight="64.0" prefWidth="256.0" text="Dishes">
+                    <font>
+                        <Font name="LibreFranklin-Regular" size="26.0" />
+                    </font>
+                    <padding>
+                        <Insets left="64.0" />
+                    </padding>
+                </JFXButton>
+                <JFXButton fx:id="selectIngredientsPane" alignment="BASELINE_LEFT" defaultButton="true" prefHeight="64.0" prefWidth="256.0" text="Ingredients">
+                    <font>
+                        <Font name="LibreFranklin-Regular" size="26.0" />
+                    </font>
+                    <padding>
+                        <Insets left="64.0" />
+                    </padding>
+                </JFXButton>
+                <JFXButton fx:id="selectSuppliersPane" alignment="BASELINE_LEFT" defaultButton="true" prefHeight="64.0" prefWidth="256.0" text="Suppliers">
+                    <font>
+                        <Font name="LibreFranklin-Regular" size="26.0" />
+                    </font>
+                    <padding>
+                        <Insets left="64.0" />
+                    </padding>
+                </JFXButton>
+                <JFXButton fx:id="selectStaffPane" alignment="BASELINE_LEFT" defaultButton="true" prefHeight="64.0" prefWidth="256.0" text="Staff">
+                    <font>
+                        <Font name="LibreFranklin-Regular" size="26.0" />
+                    </font>
+                    <padding>
+                        <Insets left="64.0" />
+                    </padding>
+                </JFXButton>
+                <JFXButton fx:id="selectDronesPane" alignment="BASELINE_LEFT" defaultButton="true" prefHeight="64.0" prefWidth="256.0" text="Drones">
+                    <font>
+                        <Font name="LibreFranklin-Regular" size="26.0" />
+                    </font>
+                    <padding>
+                        <Insets left="64.0" />
+                    </padding>
+                </JFXButton>
+                <JFXButton fx:id="selectUsersPane" alignment="BASELINE_LEFT" defaultButton="true" prefHeight="64.0" prefWidth="256.0" text="Users">
+                    <font>
+                        <Font name="LibreFranklin-Regular" size="26.0" />
+                    </font>
+                    <padding>
+                        <Insets left="64.0" />
+                    </padding>
+                </JFXButton>
+                <JFXButton fx:id="selectPostcodesPane" alignment="BASELINE_LEFT" defaultButton="true" prefHeight="64.0" prefWidth="256.0" text="Postcodes">
+                    <font>
+                        <Font name="LibreFranklin-Regular" size="26.0" />
+                    </font>
+                    <padding>
+                        <Insets left="64.0" />
+                    </padding>
+                </JFXButton>
+            </children>
+        </VBox>
+      <TableView fx:id="ordersTable" layoutX="391.0" layoutY="192.0" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="firstColumn" prefWidth="75.0" text="C1" />
+          <TableColumn fx:id="secondColumn" prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+    </children>
+</AnchorPane>

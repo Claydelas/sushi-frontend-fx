@@ -1,0 +1,79 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>comp1206</groupId>
+  <artifactId>sushi</artifactId>
+  <version>1</version>
+
+  <name>sushi</name>
+  <url>https://secure.ecs.soton.ac.uk/notes/comp1206/cw1</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+  </properties>
+  
+  <build>
+    <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>2.4</version>
+            <configuration>
+                <archive>
+                    <manifest>
+                        <mainClass>comp1206.sushi.Launcher</mainClass>
+                    </manifest>
+                </archive>
+            </configuration>
+        </plugin>
+      </plugins>
+</build>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+      <dependency>
+          <groupId>com.jfoenix</groupId>
+          <artifactId>jfoenix</artifactId>
+          <version>9.0.8</version>
+      </dependency>
+      <dependency>
+          <groupId>org.openjfx</groupId>
+          <artifactId>javafx</artifactId>
+          <version>11.0.2</version>
+      </dependency>
+      <dependency>
+          <groupId>org.openjfx</groupId>
+          <artifactId>javafx-base</artifactId>
+          <version>11.0.2</version>
+      </dependency>
+      <dependency>
+          <groupId>org.openjfx</groupId>
+          <artifactId>javafx-controls</artifactId>
+          <version>11.0.2</version>
+      </dependency>
+      <dependency>
+          <groupId>org.openjfx</groupId>
+          <artifactId>javafx-fxml</artifactId>
+          <version>11</version>
+      </dependency>
+      <dependency>
+          <groupId>org.openjfx</groupId>
+          <artifactId>javafx-graphics</artifactId>
+          <version>11.0.2</version>
+      </dependency>
+      <dependency>
+          <groupId>org.controlsfx</groupId>
+          <artifactId>controlsfx</artifactId>
+          <version>11.0.0-RC2</version>
+      </dependency>
+  </dependencies>
+  <description>Sushi Coursework for COMP1206</description>
+</project>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<AnchorPane fx:id="root" prefHeight="850.0" prefWidth="1130.0" stylesheets="@../src/resources/css/globalStyles.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comp1206.sushi.server.controllers.MainViewController">
+    <children>
+      <JFXTabPane fx:id="drawerContent" layoutY="64.0" maxHeight="737.0" maxWidth="256.0" minHeight="737.0" minWidth="0.0" prefHeight="737.0" prefWidth="256.0" rotateGraphic="true" side="LEFT" stylesheets="@../src/resources/css/navigationDrawer.css" tabMaxHeight="256.0" tabMaxWidth="64.0" tabMinHeight="256.0" tabMinWidth="64.0" AnchorPane.leftAnchor="0.0">
+         <tabs>
+            <Tab fx:id="Orders" closable="false">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab fx:id="Dishes" closable="false">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab fx:id="Ingredients" closable="false">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+            <Tab fx:id="Suppliers" closable="false">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+            <Tab fx:id="Staff" closable="false">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+            <Tab fx:id="Drones" closable="false">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+            <Tab fx:id="Users" closable="false">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+            <Tab fx:id="Postcodes" closable="false">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+      <JFXHamburger fx:id="hamburger" layoutX="22.0" layoutY="22.0" />
+        <StackPane fx:id="mainContent" layoutX="346.0" layoutY="156.0" prefHeight="490.0" prefWidth="622.0">
+         <children>
+                <AnchorPane fx:id="ordersPane" prefHeight="200.0" prefWidth="200.0">
+                    <children>
+                        <TableView fx:id="ordersTable" layoutX="15.0" layoutY="41.0" prefHeight="450.0" prefWidth="620.0" stylesheets="@../src/resources/css/tableStyling.css">
+                            <columns>
+                                <TableColumn fx:id="firstColumn" prefWidth="75.0" text="C1" />
+                                <TableColumn fx:id="secondColumn" prefWidth="75.0" text="C2" />
+                            </columns>
+                        </TableView>
+                    </children>
+                </AnchorPane>
+         </children>
+        </StackPane>
+      <JFXDrawer fx:id="drawer" defaultDrawerSize="256.0" layoutY="64.0" prefHeight="737.0" prefWidth="256.0" AnchorPane.leftAnchor="0.0" />
+    </children>
+</AnchorPane>

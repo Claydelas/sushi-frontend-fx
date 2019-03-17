@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="850.0" prefWidth="1130.0" stylesheets="@../css/globalStyles.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comp1206.sushi.server.controllers.MainViewController">
+    <children>
+        <JFXHamburger fx:id="hamburger" layoutX="22.0" layoutY="22.0" />
+        <JFXDrawer fx:id="drawer" defaultDrawerSize="256.0" layoutY="64.0" miniDrawerSize="74.0" prefHeight="737.0" prefWidth="256.0" AnchorPane.leftAnchor="0.0">
+         <children>
+            <VBox fx:id="drawerContent" prefHeight="752.0" prefWidth="256.0">
+               <children>
+                  <JFXButton fx:id="selectOrders" prefHeight="64.0" prefWidth="256.0">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="selectDishes" prefHeight="64.0" prefWidth="256.0">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="selectIngredients" prefHeight="64.0" prefWidth="256.0">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="selectSuppliers" prefHeight="64.0" prefWidth="256.0">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="selectStaff" prefHeight="64.0" prefWidth="256.0">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="selectDrones" prefHeight="64.0" prefWidth="256.0">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="selectUsers" prefHeight="64.0" prefWidth="256.0">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="selectPostcodes" prefHeight="64.0" prefWidth="256.0">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </children></JFXDrawer>
+              <TableView fx:id="ordersTable" layoutX="255.0" layoutY="200.0" prefHeight="450.0" prefWidth="620.0" stylesheets="@../css/tableStyling.css">
+                  <columns>
+                  <TableColumn fx:id="firstColumn" prefWidth="75.0" text="C1" />
+                  <TableColumn fx:id="secondColumn" prefWidth="75.0" text="C2" />
+                  </columns>
+              </TableView>
+    </children>
+</AnchorPane>
