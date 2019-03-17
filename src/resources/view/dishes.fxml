@@ -6,7 +6,7 @@
 
 <AnchorPane minHeight="800.0" minWidth="1014.0" prefHeight="800.0" prefWidth="1014.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comp1206.sushi.server.controllers.DishesController">
     <children>
-        <TableView fx:id="dishesTable" editable="true" layoutX="14.0" layoutY="14.0" prefHeight="431.0" prefWidth="986.0" stylesheets="@../css/tableStyling.css">
+        <TableView fx:id="dishesTable" editable="true" layoutX="14.0" layoutY="14.0" prefHeight="425.0" prefWidth="986.0" stylesheets="@../css/tableStyling.css">
             <columns>
                 <TableColumn fx:id="name" prefWidth="75.0" text="Name" />
                 <TableColumn fx:id="description" prefWidth="75.0" text="Description" />
