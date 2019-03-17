@@ -61,7 +61,7 @@ public class DishesController extends MainViewController implements Initializabl
         restockAmount.setOnEditCommit(e -> dishesTable.getSelectionModel().getSelectedItem().setRestockAmount(e.getNewValue()));
 
         //---------------------Stock Column---------------------------------
-        stock.setCellValueFactory(param -> new SimpleIntegerProperty(server.getDishStockLevels().get(param.getValue()).intValue()));
+        stock.setCellValueFactory(stock -> new SimpleIntegerProperty(server.getDishStockLevels().get(stock.getValue()).intValue()));
 
         ObservableList<Dish> dishData = FXCollections.observableList(server.getDishes());
         dishesTable.setItems(dishData);

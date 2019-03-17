@@ -1,15 +1,16 @@
 .table-view {
-    //-fx-table-color: #a0a0a0;
+/ / -fx-table-color: #a0a0a0;
     -fx-table-color: #3c3c3c;
     -fx-table-rippler-color: #828282;
 }
+
 :focused {
     -fx-background-color: -fx-table-color, -fx-box-border, -fx-control-inner-background;
     -fx-background-insets: -1.4, 0, 1;
     -fx-background-radius: 1.4, 0, 0;
 }
 
-.table-view:focused .table-row-cell:selected{
+.table-view:focused .table-row-cell:selected {
     -fx-background-color: -fx-table-color;
     -fx-table-cell-border-color: -fx-table-color;
     -fx-text-fill: WHITE;
@@ -95,31 +96,40 @@
 
 .table-view .menu-item:focused {
     -fx-background-color: -fx-table-color;
-
 }
 
 .table-view .menu-item .label {
     -fx-padding: 5 0 5 0;
 }
-.text-field{
+
+.table-cell .text-field {
     -fx-text-alignment: center;
     -fx-alignment: center;
 }
-.table-row-cell:empty{
+
+.table-row-cell:empty {
     -fx-background-color: white;
 }
+
 /*.table-view > .column-header-background > .show-hide-columns-button {
     -fx-background-color: white;
 }*/
-.thumb{
+.table-view .scroll-bar:horizontal .thumb,
+.table-view .scroll-bar:vertical .thumb {
     -fx-background-color: #3c3c3c;
+    -fx-background-insets: 2, 0, 0;
+    -fx-background-radius: 1em;
 }
-.track{
-    -fx-background-color: linear-gradient(to bottom, rgba(230,230,230,1) 0%, rgba(255,255,255,0.65) 50%, rgba(230,230,230,1) 100%);
+
+.table-view .scroll-bar:horizontal .track,
+.table-view .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+    -fx-border-color: linear-gradient(to bottom, rgba(230, 230, 230, 1) 0%, rgba(255, 255, 255, 0.65) 50%, rgba(230, 230, 230, 1) 100%);
+    -fx-background-radius: 2em;
+    -fx-border-radius: 2em;
 }
-.increment-button{
-    -fx-background-color: white;
-}
-.decrement-button{
-    -fx-background-color: white;
+
+.table-view .increment-button, .table-view .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 2em;
 }
