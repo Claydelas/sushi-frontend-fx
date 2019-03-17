@@ -1,5 +1,5 @@
 .jfx-button {
-    -fx-font-smoothing-type: gray;
+
 }
 
 .jfx-button:hover {
@@ -13,9 +13,6 @@
 .jfx-button:focused {
     //-fx-text-fill: #000000;
     //-fx-background-color: rgba(0, 0, 0, 0.12);
-}
-.VBox{
-    //-fx-background-color: linear-gradient(to bottom right, rgba(60,60,60,1) 0%, rgba(61,61,61,1) 15%, rgba(62,62,62,1) 29%, rgba(63,63,63,1) 44%, rgba(64,64,64,1) 59%, rgba(64,64,64,1) 76%, rgba(64,64,64,1) 87%, rgba(65,65,65,1) 100%);
 }
 
 .jfx-snackbar-content {

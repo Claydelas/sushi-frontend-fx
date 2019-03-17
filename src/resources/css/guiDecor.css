@@ -1,21 +1,21 @@
+/*main font style across the gui*/
 .jfx-decorator {
     -fx-decorator-color: #272727;
-    -fx-font-family: "Libre Franklin";
-    -fx-font-size: 18;
-    -fx-font-smoothing-type: gray;
+    -fx-font-family: "Roboto Light";
+    -fx-font-size: 22;
 }
-
+/*stage buttons style*/
 .jfx-decorator .jfx-decorator-buttons-container {
     -fx-background-color: -fx-decorator-color;
 
 }
-
+/*application title style*/
 .jfx-decorator-text {
-    -fx-font-family: "Libre Franklin";
-    -fx-font-size: 26;
-    -fx-font-smoothing-type: gray;
+    -fx-font-family: "Roboto";
+    -fx-font-size: 28;
+    -fx-fill: #e6e6e6;
 }
-
+/*thin stage borders to allow resizing*/
 .jfx-decorator .resize-border {
     -fx-border-color: -fx-decorator-color;
     -fx-border-width: 2 2 2 2;

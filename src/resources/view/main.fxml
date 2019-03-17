@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 
 <AnchorPane fx:id="mainWindowView" minHeight="800.0" minWidth="1270.0" prefHeight="800.0" prefWidth="1270.0" stylesheets="@../css/globalStyles.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comp1206.sushi.server.controllers.MainViewController">
     <children>
@@ -14,6 +17,17 @@
                             <fx:include fx:id="Orders" source="orders.fxml" />
                         </AnchorPane>
                     </content>
+               <graphic>
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <Group>
+                           <children>
+                              <Label rotate="90.0" text="Orders" />
+                           </children>
+                        </Group>
+                     </children>
+                  </StackPane>
+               </graphic>
                 </Tab>
                 <Tab fx:id="dishesTab" closable="false">
                     <content>
@@ -21,20 +35,17 @@
                             <fx:include fx:id="Dishes" source="dishes.fxml" />
                         </AnchorPane>
                     </content>
-                </Tab>
-                <Tab fx:id="ingredientsTab" closable="false">
-                    <content>
-                        <AnchorPane minHeight="800.0" minWidth="1014.0">
-                        <fx:include fx:id="Ingredients" source="ingredients.fxml" />
-                        </AnchorPane>
-                    </content>
-                </Tab>
-                <Tab fx:id="suppliersTab" closable="false">
-                    <content>
-                        <AnchorPane minHeight="800.0" minWidth="1014.0">
-                            <fx:include fx:id="Suppliers" source="suppliers.fxml" />
-                        </AnchorPane>
-                    </content>
+               <graphic>
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <Group>
+                           <children>
+                              <Label rotate="90.0" text="Dishes" />
+                           </children>
+                        </Group>
+                     </children>
+                  </StackPane>
+               </graphic>
                 </Tab>
                 <Tab fx:id="staffTab" closable="false">
                     <content>
@@ -42,13 +53,17 @@
                             <fx:include fx:id="Staff" source="staff.fxml" />
                         </AnchorPane>
                     </content>
-                </Tab>
-                <Tab fx:id="dronesTab" closable="false">
-                    <content>
-                        <AnchorPane minHeight="800.0" minWidth="1014.0">
-                            <fx:include fx:id="Drones" source="drones.fxml" />
-                        </AnchorPane>
-                    </content>
+               <graphic>
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <Group>
+                           <children>
+                              <Label rotate="90.0" text="Staff" />
+                           </children>
+                        </Group>
+                     </children>
+                  </StackPane>
+               </graphic>
                 </Tab>
                 <Tab fx:id="usersTab" closable="false">
                     <content>
@@ -56,6 +71,35 @@
                             <fx:include fx:id="Users" source="users.fxml" />
                         </AnchorPane>
                     </content>
+               <graphic>
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <Group>
+                           <children>
+                              <Label rotate="90.0" text="Users" />
+                           </children>
+                        </Group>
+                     </children>
+                  </StackPane>
+               </graphic>
+                </Tab>
+                <Tab fx:id="dronesTab" closable="false">
+                    <content>
+                        <AnchorPane minHeight="800.0" minWidth="1014.0">
+                            <fx:include fx:id="Drones" source="drones.fxml" />
+                        </AnchorPane>
+                    </content>
+               <graphic>
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <Group>
+                           <children>
+                              <Label rotate="90.0" text="Drones" />
+                           </children>
+                        </Group>
+                     </children>
+                  </StackPane>
+               </graphic>
                 </Tab>
                 <Tab fx:id="postcodesTab" closable="false">
                     <content>
@@ -63,6 +107,53 @@
                             <fx:include fx:id="Postcodes" source="postcodes.fxml" />
                         </AnchorPane>
                     </content>
+               <graphic>
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <Group>
+                           <children>
+                              <Label rotate="90.0" text="Postcodes" />
+                           </children>
+                        </Group>
+                     </children>
+                  </StackPane>
+               </graphic>
+                </Tab>
+                <Tab fx:id="suppliersTab" closable="false">
+                    <content>
+                        <AnchorPane minHeight="800.0" minWidth="1014.0">
+                            <fx:include fx:id="Suppliers" source="suppliers.fxml" />
+                        </AnchorPane>
+                    </content>
+               <graphic>
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <Group>
+                           <children>
+                              <Label rotate="90.0" text="Suppliers" />
+                           </children>
+                        </Group>
+                     </children>
+                  </StackPane>
+               </graphic>
+                </Tab>
+                <Tab fx:id="ingredientsTab" closable="false">
+                    <content>
+                        <AnchorPane minHeight="800.0" minWidth="1014.0">
+                        <fx:include fx:id="Ingredients" source="ingredients.fxml" />
+                        </AnchorPane>
+                    </content>
+               <graphic>
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <Group>
+                           <children>
+                              <Label rotate="90.0" text="Ingredients" />
+                           </children>
+                        </Group>
+                     </children>
+                  </StackPane>
+               </graphic>
                 </Tab>
             </tabs>
         </JFXTabPane>

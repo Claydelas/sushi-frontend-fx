@@ -33,6 +33,7 @@ public class ServerWindow extends Application {
 
         //new scene with the custom decor 860, 700
         Scene scene = new Scene(styleDecor, 1270, 800);
+        scene.getStylesheets().add("http://fonts.googleapis.com/css?family=Roboto");
 
         //adjusts default styling
         primaryStage.initStyle(StageStyle.UNDECORATED);

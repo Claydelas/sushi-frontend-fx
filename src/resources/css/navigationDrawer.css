@@ -21,19 +21,24 @@
 .jfx-tab-pane .tab:selected
 {
     -fx-background-color: #3c3c3c;
+    //-fx-background-color: rgba(0,0,0,0.04);
 }
 
-.tab .tab-label {
+/*.tab .tab-label {
     -fx-alignment: CENTER;
     -fx-text-fill: #828282;
     -fx-font-size: 12px;
     -fx-font-weight: bold;
-}
+}*/
 
-.tab:selected .tab-label {
-    -fx-alignment: CENTER;
-    -fx-text-fill: #96b946;
+.tab:selected .label {
+    //-fx-text-fill: #FFFFFF;
+    -fx-text-fill: #e6e6e6;
+    -fx-font-size: 30;
 }
-.label {
-    -fx-text-fill: #FFFFFF;
+.tab .label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: #3c3c3c;
+    -fx-font-family: "Roboto Thin";
+    -fx-font-size: 28;
 }
