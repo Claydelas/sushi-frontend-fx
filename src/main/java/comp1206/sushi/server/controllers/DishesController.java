@@ -20,6 +20,7 @@ import java.util.ResourceBundle;
 
 public class DishesController extends MainViewController implements Initializable {
 
+    protected static Dish currentlySelectedDish;
     private PopOver popOver;
     @FXML
     private AnchorPane recipe;
@@ -39,7 +40,6 @@ public class DishesController extends MainViewController implements Initializabl
     private TableColumn<Dish, Number> stock;
     @FXML
     private JFXButton editRecipeButton;
-    protected static Dish currentlySelectedDish;
     @FXML
     private RecipeController recipeController;
 
@@ -89,8 +89,10 @@ public class DishesController extends MainViewController implements Initializabl
         });
 
         editRecipeButton.setOnAction(e -> {
+            if (currentlySelectedDish == null) currentlySelectedDish = dishesTable.getItems().get(0);
             recipeController.initIngredientList();
-            if (currentlySelectedDish != null) popOver.show(editRecipeButton);
+            popOver.setTitle(currentlySelectedDish.getName() + "'s recipe");
+            popOver.show(editRecipeButton);
         });
     }
 }

@@ -40,6 +40,15 @@ public class RecipeController extends DishesController implements Initializable 
                 updateIngredientList();
             }
         });
+
+        ingredientsInDishList.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                //server.getRecipe(currentlySelectedDish).get(newSelection); --returns the quantity of the ingredient
+
+                //put in a spinner?
+                //quantity.setText(server.getRecipe(currentlySelectedDish).get(newSelection);)
+            }
+        });
     }
 
     void initIngredientList() {
@@ -47,7 +56,7 @@ public class RecipeController extends DishesController implements Initializable 
         updateIngredientList();
     }
 
-    private void updateIngredientList() {
+    void updateIngredientList() {
         ingredientsInDishList.setItems(FXCollections.observableArrayList(ingredientsInDish));
     }
 }

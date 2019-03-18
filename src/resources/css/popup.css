@@ -1,0 +1,46 @@
+.label{
+    -fx-text-fill: #3c3c3c;
+    -fx-font-family: "Roboto Thin";
+    -fx-font-size: 24;
+}
+
+/*
+//dark theme
+
+.list-view {
+    -fx-background-color: #232323;
+}
+
+.list-view .list-cell:hover {
+    -fx-background-color: #434343;
+}
+
+.list-view .list-cell:selected {
+    -fx-background-color: #434343;
+}
+
+.list-view .list-cell {
+    -fx-background-color: #232323;
+    -fx-text-fill: white;
+}
+
+.list-view .label {
+    -fx-text-fill: white;
+}
+
+.jfx-rippler {
+    -jfx-rippler-fill: red;
+}*/
+.list-view .list-cell:selected, .list-view .list-cell:focused {
+    -fx-text-fill: #e6e6e6;
+    -fx-background-color: #434343;
+}
+.list-view .jfx-rippler {
+    -jfx-rippler-fill: rgb(222, 222, 222);
+}
+.list-view{
+    -fx-border-color: #434343;
+    -fx-background-insets: 0;
+    -fx-padding: 0px;
+}
+
