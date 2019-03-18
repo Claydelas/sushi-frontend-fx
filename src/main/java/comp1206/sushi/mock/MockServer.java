@@ -245,7 +245,7 @@ public class MockServer implements ServerInterface {
 
 	@Override
 	public void addIngredientToDish(Dish dish, Ingredient ingredient, Number quantity) {
-		if(quantity == Integer.valueOf(0)) {
+		if(quantity.equals(0)) {
 			removeIngredientFromDish(dish,ingredient);
 		} else {
 			dish.getRecipe().put(ingredient,quantity);

@@ -22,7 +22,7 @@ public class Dish extends Model {
         this.price = new SimpleFloatProperty(price.floatValue());
         this.restockThreshold = new SimpleIntegerProperty(restockThreshold.intValue());
         this.restockAmount = new SimpleIntegerProperty(restockAmount.intValue());
-        this.recipe = new HashMap<>();
+        this.recipe = new HashMap<Ingredient,Number>();
     }
 
     public String getName() {

@@ -21,7 +21,7 @@
          </columnResizePolicy>
         </TableView>
       <JFXButton fx:id="editRecipeButton" layoutX="14.0" layoutY="456.0" prefHeight="50.0" prefWidth="168.0" text="Edit Recipe">
-          <fx:include fx:id="recipe" source="recipe.fxml" visible="false"/>
+          <fx:include fx:id="recipe" source="recipe.fxml"/>
       </JFXButton>
     </children>
 </AnchorPane>

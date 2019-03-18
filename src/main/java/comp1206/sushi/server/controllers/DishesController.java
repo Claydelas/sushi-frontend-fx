@@ -21,16 +21,27 @@ import java.util.ResourceBundle;
 public class DishesController extends MainViewController implements Initializable {
 
     private PopOver popOver;
-    @FXML private AnchorPane recipe;
-    @FXML private TableView<Dish> dishesTable;
-    @FXML private TableColumn<Dish, String> name;
-    @FXML private TableColumn<Dish, String> description;
-    @FXML private TableColumn<Dish, Number> price;
-    @FXML private TableColumn<Dish, Number> restockThreshold;
-    @FXML private TableColumn<Dish, Number> restockAmount;
-    @FXML private TableColumn<Dish, Number> stock;
-    @FXML private JFXButton editRecipeButton;
-    protected Dish currentlySelectedDish;
+    @FXML
+    private AnchorPane recipe;
+    @FXML
+    private TableView<Dish> dishesTable;
+    @FXML
+    private TableColumn<Dish, String> name;
+    @FXML
+    private TableColumn<Dish, String> description;
+    @FXML
+    private TableColumn<Dish, Number> price;
+    @FXML
+    private TableColumn<Dish, Number> restockThreshold;
+    @FXML
+    private TableColumn<Dish, Number> restockAmount;
+    @FXML
+    private TableColumn<Dish, Number> stock;
+    @FXML
+    private JFXButton editRecipeButton;
+    protected static Dish currentlySelectedDish;
+    @FXML
+    private RecipeController recipeController;
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
@@ -70,11 +81,15 @@ public class DishesController extends MainViewController implements Initializabl
         dishesTable.setItems(dishData);
 
         dishesTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            if (newSelection != null) currentlySelectedDish = dishesTable.getSelectionModel().getSelectedItem();
-            popOver.setTitle(currentlySelectedDish.getName() + "'s recipe");
+            if (newSelection != null) {
+                currentlySelectedDish = dishesTable.getSelectionModel().getSelectedItem();
+                recipeController.initIngredientList();
+                popOver.setTitle(currentlySelectedDish.getName() + "'s recipe");
+            }
         });
 
         editRecipeButton.setOnAction(e -> {
+            recipeController.initIngredientList();
             if (currentlySelectedDish != null) popOver.show(editRecipeButton);
         });
     }
