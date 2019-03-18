@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -19,5 +20,8 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
         </TableView>
+      <JFXButton fx:id="editRecipeButton" layoutX="14.0" layoutY="456.0" prefHeight="50.0" prefWidth="168.0" text="Edit Recipe">
+          <fx:include fx:id="recipe" source="recipe.fxml" visible="false"/>
+      </JFXButton>
     </children>
 </AnchorPane>
