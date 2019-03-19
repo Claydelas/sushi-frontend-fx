@@ -40,6 +40,7 @@ public class DishesController extends MainViewController {
     @FXML
     private RecipeController recipeController;
 
+    //static method for hiding the popover from other controllers
     static void hideRecipeView() {
         popOver.hide(Duration.seconds(0.5));
     }
@@ -51,16 +52,19 @@ public class DishesController extends MainViewController {
 
         //---------------------Name Column---------------------------------
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        //off-spec, modifies directly due to lack of api implementation
         name.setCellFactory(TextFieldTableCell.forTableColumn());
         name.setOnEditCommit(e -> dishesTable.getSelectionModel().getSelectedItem().setName(e.getNewValue()));
 
         //---------------------Description Column---------------------------------
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
+        //off-spec, modifies directly due to lack of api implementation
         description.setCellFactory(TextFieldTableCell.forTableColumn());
         description.setOnEditCommit(e -> dishesTable.getSelectionModel().getSelectedItem().setDescription(e.getNewValue()));
 
         //---------------------Price Column---------------------------------
         price.setCellValueFactory(new PropertyValueFactory<>("price"));
+        //off-spec, modifies directly due to lack of api implementation
         price.setCellFactory(column -> new NumericTableCell<>());
         price.setOnEditCommit(e -> dishesTable.getSelectionModel().getSelectedItem().setPrice(e.getNewValue()));
 
@@ -77,7 +81,9 @@ public class DishesController extends MainViewController {
         //---------------------Stock Column---------------------------------
         stock.setCellValueFactory(stock -> new SimpleIntegerProperty(server.getDishStockLevels().get(stock.getValue()).intValue()));
 
+        //wraps the dishes list in a observable one, so table listens for updates on the model
         ObservableList<Dish> dishData = FXCollections.observableList(server.getDishes());
+        //sets the table's contents to the observable list
         dishesTable.setItems(dishData);
 
         //Selecting in the table triggers an update to the recipe editing view

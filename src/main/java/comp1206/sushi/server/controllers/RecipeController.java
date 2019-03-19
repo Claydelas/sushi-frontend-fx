@@ -62,6 +62,7 @@ public class RecipeController extends DishesController implements Initializable 
             }
         });
 
+        //selecting an ingredient in the list updates the instance variable, updates the slider and unit label
         ingredientsInDishList.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 currentlySelectedIngredient = newSelection;
@@ -69,20 +70,24 @@ public class RecipeController extends DishesController implements Initializable 
                 ingredientUnit.setText(currentlySelectedIngredient.getUnit());
             }
         });
+        //listens for updates on the slider and updates the ingredient's recipe accordingly
         quantitySlider.valueProperty().addListener(((observableValue, number, newNumber) -> {
             server.addIngredientToDish(currentlySelectedDish, currentlySelectedIngredient, newNumber);
         }));
+        //hides the popover and requests focus to reset the button's rippler
         confirmRecipe.setOnAction(e -> {
             hideRecipeView();
             availableIngredientsList.requestFocus();
         });
     }
 
+    //sets the right list to display the currently selected dish's recipe
     void initIngredientList() {
         ingredientsInDish = FXCollections.observableSet(server.getRecipe(currentlySelectedDish).keySet());
         updateIngredientList();
     }
 
+    //only updates the ingredients in dish list, without requesting info from the server
     private void updateIngredientList() {
         ingredientsInDishList.setItems(FXCollections.observableArrayList(ingredientsInDish));
     }
