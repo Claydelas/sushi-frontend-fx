@@ -18,9 +18,13 @@ import org.controlsfx.control.PopOver;
 public class DishesController extends MainViewController {
 
     protected static Dish currentlySelectedDish;
-    private static PopOver popOver;
+
+    private static PopOver editRecipeView;
+
     @FXML
     private AnchorPane recipe;
+    @FXML
+    private AnchorPane newDishView;
     @FXML
     private TableView<Dish> dishesTable;
     @FXML
@@ -42,7 +46,7 @@ public class DishesController extends MainViewController {
 
     //static method for hiding the popover from other controllers
     static void hideRecipeView() {
-        popOver.hide(Duration.seconds(0.5));
+        editRecipeView.hide(Duration.seconds(0.5));
     }
 
     @FXML
@@ -91,7 +95,7 @@ public class DishesController extends MainViewController {
             if (newSelection != null) {
                 currentlySelectedDish = dishesTable.getSelectionModel().getSelectedItem();
                 recipeController.initIngredientList();
-                popOver.setTitle(currentlySelectedDish.getName() + "'s recipe");
+                editRecipeView.setTitle(currentlySelectedDish.getName() + "'s recipe");
             }
         });
 
@@ -102,13 +106,16 @@ public class DishesController extends MainViewController {
             //initialises ingredients in dish list in the popover view
             recipeController.initIngredientList();
             //sets the title of the popover to the dish's name
-            popOver.setTitle(currentlySelectedDish.getName() + "'s recipe");
+            editRecipeView.setTitle(currentlySelectedDish.getName() + "'s recipe");
             //cancels any cell edit in progress
             dishesTable.edit(-1, null);
             //makes the table not editable to avoid conflicts with popover
             dishesTable.setEditable(false);
-            //shows the recipe editing popover
-            popOver.show(editRecipeButton);
+            if (!editRecipeView.isShowing()) {
+                newDishView.setVisible(false);
+                //shows the recipe editing popover
+                editRecipeView.show(editRecipeButton);
+            }
         });
 
         //clicking in the table but not on a Dish cancels any ongoing edit
@@ -116,19 +123,23 @@ public class DishesController extends MainViewController {
             if (newFocus) dishesTable.edit(-1, null);
         });
         //when the popover is closed, restores the table's editing ability
-        popOver.setOnHidden(e -> dishesTable.setEditable(true));
+        editRecipeView.setOnHidden(e -> {
+            newDishView.setVisible(true);
+            dishesTable.setEditable(true);
+        });
     }
 
     //configures the popover view
     private void setupRecipeView() {
         //new popover with the recipe pane as content
-        popOver = new PopOver(recipe);
+        editRecipeView = new PopOver(recipe);
         //shows title
-        popOver.setHeaderAlwaysVisible(true);
-        popOver.setDetachable(false);
-        popOver.setCloseButtonEnabled(false);
-        popOver.setAutoHide(false);
+        editRecipeView.setHeaderAlwaysVisible(true);
+        editRecipeView.setDetachable(false);
+        editRecipeView.setCloseButtonEnabled(false);
+        editRecipeView.setAutoHide(false);
+        editRecipeView.setArrowLocation(PopOver.ArrowLocation.LEFT_CENTER);
         //loads styling
-        popOver.getRoot().getStylesheets().add("/css/popup.css");
+        editRecipeView.getRoot().getStylesheets().add("/css/popup.css");
     }
 }

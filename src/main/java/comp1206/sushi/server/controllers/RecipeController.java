@@ -8,13 +8,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableSet;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class RecipeController extends DishesController implements Initializable {
+public class RecipeController extends DishesController {
 
     @FXML
     private JFXButton plus;
@@ -34,7 +30,7 @@ public class RecipeController extends DishesController implements Initializable 
     private Label ingredientUnit;
 
     @FXML
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize() {
 
         //Populates the left list view with all available ingredients in the server
         ObservableList<Ingredient> availableIngredients = FXCollections.observableList(server.getIngredients());
