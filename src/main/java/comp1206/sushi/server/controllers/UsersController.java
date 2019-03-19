@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 public class UsersController extends MainViewController {
 
     @FXML
-    private void initialize() {
+    public void initialize() {
     }
 
 }

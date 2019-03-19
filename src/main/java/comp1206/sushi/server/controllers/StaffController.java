@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 
 public class StaffController extends MainViewController {
     @FXML
-    private void initialize() {
+    public void initialize() {
 
     }
 }

@@ -7,7 +7,6 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -15,10 +14,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 import org.controlsfx.control.PopOver;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class DishesController extends MainViewController implements Initializable {
+public class DishesController extends MainViewController {
 
     protected static Dish currentlySelectedDish;
     private PopOver popOver;
@@ -44,7 +40,7 @@ public class DishesController extends MainViewController implements Initializabl
     private RecipeController recipeController;
 
     @FXML
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize() {
 
         popOver = new PopOver(recipe);
         popOver.setHeaderAlwaysVisible(true);
