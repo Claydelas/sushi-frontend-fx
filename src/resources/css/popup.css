@@ -60,4 +60,11 @@
 .list-view .list-cell:even{
     -fx-background-color: transparent;
 }
+.popover > .border {
+    -fx-stroke-width: 0.01;
+    -fx-fill: transparent !important;
+}
+.popover > .content > .title > .text  {
+    -fx-text-fill: #3c3c3c;
+}
 

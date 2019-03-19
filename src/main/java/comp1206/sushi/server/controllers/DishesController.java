@@ -44,6 +44,7 @@ public class DishesController extends MainViewController {
 
         popOver = new PopOver(recipe);
         popOver.setHeaderAlwaysVisible(true);
+        popOver.getRoot().getStylesheets().add("/css/popup.css");
 
         //---------------------Name Column---------------------------------
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
