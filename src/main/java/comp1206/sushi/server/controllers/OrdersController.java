@@ -6,6 +6,6 @@ public class OrdersController {
 
     @FXML
     private void initialize() {
-        System.out.println("hi");
+
     }
 }

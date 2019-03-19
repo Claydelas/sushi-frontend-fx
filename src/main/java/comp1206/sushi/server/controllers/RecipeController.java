@@ -2,15 +2,14 @@ package comp1206.sushi.server.controllers;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
-import comp1206.sushi.common.Dish;
+import com.jfoenix.controls.JFXSlider;
 import comp1206.sushi.common.Ingredient;
-import comp1206.sushi.common.Postcode;
-import comp1206.sushi.common.Supplier;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableSet;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,6 +25,13 @@ public class RecipeController extends DishesController implements Initializable 
     private JFXListView<Ingredient> availableIngredientsList;
     @FXML
     private JFXListView<Ingredient> ingredientsInDishList;
+    @FXML
+    private JFXSlider quantitySlider;
+    @FXML
+    private JFXButton confirmRecipe;
+    private Ingredient currentlySelectedIngredient;
+    @FXML
+    private Label ingredientUnit;
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
@@ -43,21 +49,34 @@ public class RecipeController extends DishesController implements Initializable 
             }
         });
 
-        minus.setOnAction(e ->{
+        minus.setOnAction(e -> {
             Ingredient selectedIngredient = ingredientsInDishList.getSelectionModel().getSelectedItem();
-            if(selectedIngredient != null && ingredientsInDish.contains(selectedIngredient)){
+            if (selectedIngredient != null && ingredientsInDish.contains(selectedIngredient)) {
                 server.removeIngredientFromDish(currentlySelectedDish, selectedIngredient);
                 updateIngredientList();
+            }
+            if (ingredientsInDishList.getSelectionModel().getSelectedItem() == null) {
+                ingredientsInDishList.getSelectionModel().selectFirst();
             }
         });
 
         ingredientsInDishList.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
+                currentlySelectedIngredient = newSelection;
+                quantitySlider.setValue(server.getRecipe(currentlySelectedDish).get(newSelection).doubleValue());
+                ingredientUnit.setText(currentlySelectedIngredient.getUnit());
                 //server.getRecipe(currentlySelectedDish).get(newSelection); --returns the quantity of the ingredient
 
                 //put in a spinner?
                 //quantity.setText(server.getRecipe(currentlySelectedDish).get(newSelection);)
             }
+        });
+        quantitySlider.valueProperty().addListener(((observableValue, number, newNumber) -> {
+            server.addIngredientToDish(currentlySelectedDish, currentlySelectedIngredient, newNumber);
+        }));
+        confirmRecipe.setOnAction(e -> {
+            hideRecipeView();
+            availableIngredientsList.requestFocus();
         });
     }
 
