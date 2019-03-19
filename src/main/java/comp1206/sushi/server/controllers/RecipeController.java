@@ -19,6 +19,8 @@ public class RecipeController extends DishesController implements Initializable 
 
     @FXML
     private JFXButton plus;
+    @FXML
+    private JFXButton minus;
     private ObservableSet<Ingredient> ingredientsInDish;
     @FXML
     private JFXListView<Ingredient> availableIngredientsList;
@@ -41,6 +43,14 @@ public class RecipeController extends DishesController implements Initializable 
             }
         });
 
+        minus.setOnAction(e ->{
+            Ingredient selectedIngredient = ingredientsInDishList.getSelectionModel().getSelectedItem();
+            if(selectedIngredient != null && ingredientsInDish.contains(selectedIngredient)){
+                server.removeIngredientFromDish(currentlySelectedDish, selectedIngredient);
+                updateIngredientList();
+            }
+        });
+
         ingredientsInDishList.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 //server.getRecipe(currentlySelectedDish).get(newSelection); --returns the quantity of the ingredient
@@ -56,7 +66,7 @@ public class RecipeController extends DishesController implements Initializable 
         updateIngredientList();
     }
 
-    void updateIngredientList() {
+    private void updateIngredientList() {
         ingredientsInDishList.setItems(FXCollections.observableArrayList(ingredientsInDish));
     }
 }
