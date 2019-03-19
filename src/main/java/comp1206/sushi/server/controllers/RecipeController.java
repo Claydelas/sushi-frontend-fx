@@ -49,12 +49,14 @@ public class RecipeController extends DishesController implements Initializable 
             }
         });
 
+        //removes a ingredient from a dish and updates the list
         minus.setOnAction(e -> {
             Ingredient selectedIngredient = ingredientsInDishList.getSelectionModel().getSelectedItem();
             if (selectedIngredient != null && ingredientsInDish.contains(selectedIngredient)) {
                 server.removeIngredientFromDish(currentlySelectedDish, selectedIngredient);
                 updateIngredientList();
             }
+            //if a selected ingredient is deleted, move the selection the first ingredient in the list
             if (ingredientsInDishList.getSelectionModel().getSelectedItem() == null) {
                 ingredientsInDishList.getSelectionModel().selectFirst();
             }
@@ -65,10 +67,6 @@ public class RecipeController extends DishesController implements Initializable 
                 currentlySelectedIngredient = newSelection;
                 quantitySlider.setValue(server.getRecipe(currentlySelectedDish).get(newSelection).doubleValue());
                 ingredientUnit.setText(currentlySelectedIngredient.getUnit());
-                //server.getRecipe(currentlySelectedDish).get(newSelection); --returns the quantity of the ingredient
-
-                //put in a spinner?
-                //quantity.setText(server.getRecipe(currentlySelectedDish).get(newSelection);)
             }
         });
         quantitySlider.valueProperty().addListener(((observableValue, number, newNumber) -> {
