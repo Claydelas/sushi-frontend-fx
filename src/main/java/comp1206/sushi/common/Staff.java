@@ -12,6 +12,7 @@ public class Staff extends Model {
 	public Staff(String name) {
 		this.name = new SimpleStringProperty(name);
 		this.fatigue = new SimpleIntegerProperty(0);
+		this.status = new SimpleStringProperty();
 	}
 
 	public String getName() {

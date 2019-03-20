@@ -6,6 +6,10 @@ public class UsersController extends MainViewController {
 
     @FXML
     public void initialize() {
-    }
 
+    }
+    @Override
+    public void refresh(){
+        //dishesTable.refresh();
+    }
 }

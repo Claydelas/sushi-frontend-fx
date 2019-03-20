@@ -31,7 +31,7 @@
                 </Tab>
                 <Tab fx:id="dishesTab" closable="false">
                     <content>
-                        <AnchorPane fx:id="DishesView" minHeight="800.0" minWidth="1014.0">
+                        <AnchorPane minHeight="800.0" minWidth="1014.0">
                             <fx:include fx:id="Dishes" source="dishes.fxml" />
                         </AnchorPane>
                     </content>

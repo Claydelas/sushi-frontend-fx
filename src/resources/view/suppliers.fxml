@@ -24,7 +24,6 @@
         <JFXButton fx:id="deleteDishButton" layoutX="14.0" layoutY="627" prefHeight="50" prefWidth="168" text="Delete Dish"/>
         <JFXButton fx:id="editRecipeButton" layoutX="14.0" layoutY="567.0" prefHeight="50.0" prefWidth="168.0" text="Edit Recipe"/>
         <JFXButton fx:id="newDishButton" layoutX="14.0" layoutY="507" prefHeight="50" prefWidth="168" text="New Dish"/>
-        <fx:include fx:id="recipeView" source="recipe.fxml" />
         <AnchorPane fx:id="newDishView" layoutX="182.0" layoutY="430.0" prefHeight="315.0" prefWidth="815.0" stylesheets="@../css/popup.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" visible="false">
             <children>
                 <JFXButton fx:id="addNewDishButton" alignment="CENTER" buttonType="RAISED" layoutX="560.0" layoutY="182.0" prefHeight="45.0" prefWidth="225.0" text="Add Dish" />

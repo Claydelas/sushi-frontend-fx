@@ -40,6 +40,10 @@
     -fx-text-fill: #e6e6e6;
     -fx-background-color: #434343;
 }
+.list-cell:selected{
+    -fx-text-fill: #e6e6e6;
+    -fx-background-color: #434343;
+}
 
 .list-view .jfx-rippler {
     -jfx-rippler-fill: rgb(222, 222, 222);

@@ -44,15 +44,15 @@ public class Postcode extends Model {
 	protected void calculateDistance(Restaurant restaurant) {
 		//This function needs implementing
 		Postcode destination = restaurant.getLocation();
-		this.distance.setValue(0);
+		//this.distance.setValue(0);
 	}
 	
 	protected void calculateLatLong() {
 		//This function needs implementing
-		this.latLong = new HashMap<String,Double>();
-		latLong.put("lat", 0d);
-		latLong.put("lon", 0d);
-		this.distance.setValue(0);
+		//this.latLong = new HashMap<String,Double>();
+		//latLong.put("lat", 0d);
+		//latLong.put("lon", 0d);
+		//this.distance.setValue(0);
 	}
 	
 }

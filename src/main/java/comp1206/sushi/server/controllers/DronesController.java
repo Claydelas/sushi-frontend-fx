@@ -8,4 +8,8 @@ public class DronesController extends MainViewController {
     public void initialize() {
 
     }
+    @Override
+    public void refresh(){
+        //dishesTable.refresh();
+    }
 }

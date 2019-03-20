@@ -8,31 +8,22 @@
 
 <AnchorPane minHeight="800.0" minWidth="1014.0" prefHeight="800.0" prefWidth="1014.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comp1206.sushi.server.controllers.StaffController">
     <children>
-        <TableView fx:id="dishesTable" editable="true" layoutX="14.0" layoutY="5" prefHeight="425.0" prefWidth="986.0" stylesheets="@../css/tableStyling.css">
+        <TableView fx:id="staffTable" editable="true" layoutX="14.0" layoutY="5" prefHeight="425.0" prefWidth="986.0" stylesheets="@../css/tableStyling.css">
             <columns>
                 <TableColumn fx:id="name" prefWidth="75.0" text="Name" />
-                <TableColumn fx:id="description" prefWidth="75.0" text="Description" />
-                <TableColumn fx:id="price" prefWidth="75.0" text="Price" />
-                <TableColumn fx:id="restockThreshold" prefWidth="75.0" text="Restock @" />
-                <TableColumn fx:id="restockAmount" prefWidth="75.0" text="Restock By" />
-                <TableColumn fx:id="stock" editable="false" prefWidth="75.0" text="Stock" />
+                <TableColumn fx:id="status" prefWidth="75.0" text="Status" />
+                <TableColumn fx:id="fatigue" prefWidth="75.0" text="Fatigue" />
             </columns>
             <columnResizePolicy>
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
         </TableView>
-        <JFXButton fx:id="deleteDishButton" layoutX="14.0" layoutY="627" prefHeight="50" prefWidth="168" text="Delete Dish"/>
-        <JFXButton fx:id="editRecipeButton" layoutX="14.0" layoutY="567.0" prefHeight="50.0" prefWidth="168.0" text="Edit Recipe"/>
-        <JFXButton fx:id="newDishButton" layoutX="14.0" layoutY="507" prefHeight="50" prefWidth="168" text="New Dish"/>
-        <fx:include fx:id="recipeView" source="recipe.fxml" />
-        <AnchorPane fx:id="newDishView" layoutX="182.0" layoutY="430.0" prefHeight="315.0" prefWidth="815.0" stylesheets="@../css/popup.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" visible="false">
+        <JFXButton fx:id="deleteStaffButton" layoutX="14.0" layoutY="567.0" prefHeight="50.0" prefWidth="230" text="Fire Staff Member"/>
+        <JFXButton fx:id="newStaffButton" layoutX="14.0" layoutY="507" prefHeight="50" prefWidth="230" text="New Staff Member"/>
+        <AnchorPane fx:id="newStaffView" layoutX="182.0" layoutY="430.0" prefHeight="315.0" prefWidth="815.0" stylesheets="@../css/popup.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" visible="false">
             <children>
-                <JFXButton fx:id="addNewDishButton" alignment="CENTER" buttonType="RAISED" layoutX="560.0" layoutY="182.0" prefHeight="45.0" prefWidth="225.0" text="Add Dish" />
-                <JFXTextField fx:id="nameF" focusColor="#b99090" labelFloat="true" layoutX="35.0" layoutY="65.0" prefHeight="25.0" prefWidth="225.0" promptText="Name" />
-                <JFXTextField fx:id="restockValF" focusColor="#b99090" labelFloat="true" layoutX="300.0" layoutY="65.0" prefHeight="25.0" prefWidth="225.0" promptText="Restock Amount" />
-                <JFXTextField fx:id="descriptionF" focusColor="#b99090" labelFloat="true" layoutX="35.0" layoutY="177.0" prefHeight="25.0" prefWidth="225.0" promptText="Description" />
-                <JFXTextField fx:id="restockAtF" focusColor="#b99090" labelFloat="true" layoutX="295.0" layoutY="177.0" prefHeight="25.0" prefWidth="225.0" promptText="Restock Threshold" />
-                <JFXTextField fx:id="priceF" focusColor="#b99090" labelFloat="true" layoutX="560.0" layoutY="65.0" prefHeight="25.0" prefWidth="225.0" promptText="Price" />
+                <JFXButton fx:id="addNewStaffButton" alignment="CENTER" buttonType="RAISED" layoutX="560.0" layoutY="135.0" prefHeight="45.0" prefWidth="225.0" text="Employ" />
+                <JFXTextField fx:id="nameF" focusColor="#b99090" labelFloat="true" layoutX="295.0" layoutY="130.0" prefHeight="25.0" prefWidth="225.0" promptText="Name" />
             </children>
         </AnchorPane>
     </children>

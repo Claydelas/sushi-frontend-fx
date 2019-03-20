@@ -58,13 +58,13 @@ public class DishesController extends MainViewController {
     private JFXButton newDishButton;
     @FXML
     private JFXButton deleteDishButton;
-    private JFXTextField[] inputfields;
+    private JFXTextField[] input;
 
 
     @FXML
     public void initialize() {
 
-        inputfields = new JFXTextField[]{nameF, restockValF, priceF, descriptionF, restockAtF};
+        input = new JFXTextField[]{nameF, restockValF, priceF, descriptionF, restockAtF};
 
         //---------------------Name Column---------------------------------
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -115,7 +115,7 @@ public class DishesController extends MainViewController {
             if (!server.getDishes().isEmpty()) {
                 //if no dish was selected in the table, pick the first one as a default
                 if (currentlySelectedDish == null) {
-                    //currentlySelectedDish = server.getDishes().get(0);
+                    //currentlySelectedStaff = server.getDishes().get(0);
                     dishesTable.getSelectionModel().selectFirst();
                 }
                 //initialises ingredients in dish list in the popover view
@@ -158,13 +158,12 @@ public class DishesController extends MainViewController {
                     && descriptionF.validate() && restockAtF.validate()) {
 
                 //adds the new dish to the data
-                server.addDish(nameF.getText(), descriptionF.getText(), Float.valueOf(priceF.getText()),
-                        Float.valueOf(restockAtF.getText()), Float.valueOf(restockValF.getText()));
-                dishesTable.refresh();
+                dishData.add(new Dish(nameF.getText(), descriptionF.getText(), Float.valueOf(priceF.getText()),
+                        Float.valueOf(restockAtF.getText()), Float.valueOf(restockValF.getText())));
                 newDishView.setVisible(false);
 
                 //clears inputs
-                for (JFXTextField field : inputfields) {
+                for (JFXTextField field : input) {
                     field.setText("");
                 }
 
@@ -184,6 +183,11 @@ public class DishesController extends MainViewController {
         priceF.getValidators().addAll(evalInput, evalNum);
         restockValF.getValidators().addAll(evalInput, evalNum);
         restockAtF.getValidators().addAll(evalInput, evalNum);
+    }
+
+    @Override
+    public void refresh() {
+        dishesTable.refresh();
     }
 
 }
