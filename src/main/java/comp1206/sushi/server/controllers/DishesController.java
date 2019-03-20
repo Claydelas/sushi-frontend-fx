@@ -21,7 +21,7 @@ public class DishesController extends MainViewController {
 
     protected static Dish currentlySelectedDish;
     @FXML
-    private AnchorPane recipe;
+    private AnchorPane recipeView;
     @FXML
     private AnchorPane newDishView;
     @FXML
@@ -41,7 +41,7 @@ public class DishesController extends MainViewController {
     @FXML
     private JFXButton editRecipeButton;
     @FXML
-    private RecipeController recipeController;
+    private RecipeController recipeViewController;
     @FXML
     private JFXTextField nameF;
     @FXML
@@ -58,10 +58,13 @@ public class DishesController extends MainViewController {
     private JFXButton newDishButton;
     @FXML
     private JFXButton deleteDishButton;
+    private JFXTextField[] inputfields;
 
 
     @FXML
     public void initialize() {
+
+        inputfields = new JFXTextField[]{nameF, restockValF, priceF, descriptionF, restockAtF};
 
         //---------------------Name Column---------------------------------
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -103,7 +106,7 @@ public class DishesController extends MainViewController {
         dishesTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 currentlySelectedDish = dishesTable.getSelectionModel().getSelectedItem();
-                recipeController.initIngredientList();
+                recipeViewController.initIngredientList();
             }
         });
 
@@ -116,17 +119,20 @@ public class DishesController extends MainViewController {
                     dishesTable.getSelectionModel().selectFirst();
                 }
                 //initialises ingredients in dish list in the popover view
-                recipeController.initIngredientList();
+                recipeViewController.initIngredientList();
+                if (recipeView.isVisible()) recipeView.setVisible(false);
+                else recipeView.setVisible(true);
                 newDishView.setVisible(false);
-                recipe.setVisible(true);
                 //cancels any cell edit in progress
                 dishesTable.edit(-1, null);
             }
         });
 
         newDishButton.setOnAction(e -> {
-            recipe.setVisible(false);
-            newDishView.setVisible(true);
+            if (newDishView.isVisible()) newDishView.setVisible(false);
+            else newDishView.setVisible(true);
+
+            recipeView.setVisible(false);
             //cancels any cell edit in progress
             dishesTable.edit(-1, null);
         });
@@ -138,7 +144,7 @@ public class DishesController extends MainViewController {
                     server.removeDish(tempSelect);
                     dishesTable.getSelectionModel().clearSelection();
                     currentlySelectedDish = null;
-                    recipe.setVisible(false);
+                    recipeView.setVisible(false);
                     dishesTable.refresh();
                 } catch (ServerInterface.UnableToDeleteException e) {
                     showToastNotification("Unable to delete selected dish!");
@@ -156,6 +162,12 @@ public class DishesController extends MainViewController {
                         Float.valueOf(restockAtF.getText()), Float.valueOf(restockValF.getText()));
                 dishesTable.refresh();
                 newDishView.setVisible(false);
+
+                //clears inputs
+                for (JFXTextField field : inputfields) {
+                    field.setText("");
+                }
+
                 showToastNotification("Dish added successfully!");
 
                 //prints the data in the server for testing
