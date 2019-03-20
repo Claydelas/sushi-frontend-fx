@@ -1,5 +1,4 @@
 .table-view {
-/ / -fx-table-color: #a0a0a0;
     -fx-table-color: #3c3c3c;
     -fx-table-rippler-color: #828282;
     -fx-background-color: #F4F4F4;
@@ -15,21 +14,9 @@
     -fx-background-color: -fx-table-color;
     -fx-table-cell-border-color: -fx-table-color;
     -fx-text-fill: #e6e6e6;
-    //-fx-font-size: 26;
-}
-.table-view .table-row-cell:selected {
-    -fx-background-color: transparent;
 }
 
-/*
-.table-view:focused .table-row-cell:selected {
-    -fx-background-color: -fx-table-color;
-    -fx-table-cell-border-color: -fx-table-color;
-    -fx-text-fill: #e6e6e6;
-}
-*/
-
-.table-view:focused .table-row-cell:selected .table-cell {
+.table-view .table-row-cell:selected .table-cell > .label {
     -fx-text-fill: #e6e6e6;
 }
 
@@ -53,9 +40,6 @@
     -fx-background-color: #696969;
 }
 
-/*.table-view .column-header:last-visible {
-    -fx-border-width: 0 2 0 1;
-}*/
 
 .table-view .column-header-background {
     -fx-border-width: 0 0 1 0;
@@ -87,25 +71,6 @@
     -fx-focus-color: rgb(82, 100, 174);
 }
 
-/*.table-row-cell .jfx-text-field:error {
-    -jfx-focus-color: #D34336;
-    -jfx-unfocus-color: #D34336;
-}*/
-
-.table-row-cell .jfx-text-field .error-label {
-    -fx-text-fill: #D34336;
-    -fx-font-size: 0.75em;
-}
-
-.table-row-cell .jfx-text-field .error-icon {
-    -fx-fill: #D34336;
-    -fx-font-size: 1.0em;
-}
-
-/*.table-row-cell:grouped {
-    -fx-background-color: rgb(230, 230, 230);
-}*/
-
 .table-view .menu-item:focused {
     -fx-background-color: -fx-table-color;
 }
@@ -122,16 +87,15 @@
 .table-row-cell:empty {
     -fx-background-color: transparent;
 }
+
 .table-row-cell:odd {
     -fx-background-color: transparent;
 }
+
 .table-row-cell:even {
     -fx-background-color: transparent;
 }
 
-/*.table-view > .column-header-background > .show-hide-columns-button {
-    -fx-background-color: white;
-}*/
 .table-view .scroll-bar:horizontal .thumb,
 .table-view .scroll-bar:vertical .thumb {
     -fx-background-color: #3c3c3c;
@@ -144,6 +108,11 @@
     -fx-background-radius: 2em;
 }
 
-.table-view .scroll-bar{
+.table-view .scroll-bar {
     -fx-background-color: #F4F4F4;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #3c3c3c;
+    -fx-text-background-color: #e6e6e6;
 }

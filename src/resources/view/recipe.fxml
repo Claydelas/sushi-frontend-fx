@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="258.0" prefWidth="810.0" stylesheets="@../css/popup.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comp1206.sushi.server.controllers.RecipeController">
+<AnchorPane fx:id="recipeview" layoutX="195.0" layoutY="475.0" prefHeight="258.0" prefWidth="810.0" stylesheets="@../css/popup.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comp1206.sushi.server.controllers.RecipeController" visible="false">
    <children>
       <JFXListView fx:id="availableIngredientsList" layoutX="21.0" layoutY="47.0" prefHeight="200.0" prefWidth="170.0" />
       <JFXButton fx:id="plus" buttonType="RAISED" layoutX="204.0" layoutY="91.0" prefHeight="40.0" prefWidth="40.0" text="+">

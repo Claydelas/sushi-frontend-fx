@@ -9,9 +9,12 @@ import javafx.collections.ObservableList;
 import javafx.collections.ObservableSet;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 
 public class RecipeController extends DishesController {
 
+    @FXML
+    private AnchorPane recipeview;
     @FXML
     private JFXButton plus;
     @FXML
@@ -52,10 +55,6 @@ public class RecipeController extends DishesController {
                 server.removeIngredientFromDish(currentlySelectedDish, selectedIngredient);
                 updateIngredientList();
             }
-            //if a selected ingredient is deleted, move the selection the first ingredient in the list
-            if (ingredientsInDishList.getSelectionModel().getSelectedItem() == null) {
-                ingredientsInDishList.getSelectionModel().selectFirst();
-            }
         });
 
         //selecting an ingredient in the list updates the instance variable, updates the slider and unit label
@@ -65,20 +64,20 @@ public class RecipeController extends DishesController {
                 currentlySelectedIngredient = newSelection;
                 quantitySlider.setValue(server.getRecipe(currentlySelectedDish).get(newSelection).doubleValue());
                 ingredientUnit.setText(currentlySelectedIngredient.getUnit());
+            } else {
+                quantitySlider.setDisable(true);
+                quantitySlider.setValue(1);
+                ingredientUnit.setText("units");
             }
         });
         //listens for updates on the slider and updates the ingredient's recipe accordingly
         quantitySlider.valueProperty().addListener(((observableValue, number, newNumber) -> {
-            if(currentlySelectedIngredient != null)
-            server.addIngredientToDish(currentlySelectedDish, currentlySelectedIngredient, newNumber);
+            if (currentlySelectedIngredient != null && !quantitySlider.isDisable())
+                server.addIngredientToDish(currentlySelectedDish, currentlySelectedIngredient, newNumber);
             System.out.println(server.getRecipe(currentlySelectedDish));
 
         }));
-        //hides the popover and requests focus to reset the button's rippler
-        confirmRecipe.setOnAction(e -> {
-            hideRecipeView();
-            availableIngredientsList.requestFocus();
-        });
+        confirmRecipe.setOnAction(e -> recipeview.setVisible(false));
         if (currentlySelectedIngredient == null) quantitySlider.setDisable(true);
     }
 

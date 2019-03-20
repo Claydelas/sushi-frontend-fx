@@ -22,8 +22,8 @@
             </columnResizePolicy>
         </TableView>
         <JFXButton fx:id="editRecipeButton" layoutX="14.0" layoutY="547.0" prefHeight="50.0" prefWidth="168.0" text="Edit Recipe">
-            <fx:include fx:id="recipe" source="recipe.fxml" />
         </JFXButton>
+        <fx:include fx:id="recipe" source="recipe.fxml" />
         <AnchorPane fx:id="newDishView" layoutX="182.0" layoutY="462.0" prefHeight="315.0" prefWidth="815.0" stylesheets="@../css/popup.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
             <children>
                 <JFXButton fx:id="newDishButton" alignment="CENTER" buttonType="RAISED" layoutX="560.0" layoutY="182.0" prefHeight="45.0" prefWidth="225.0" text="Add Dish" />
