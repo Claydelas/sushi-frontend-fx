@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.NumberValidator;
 import com.jfoenix.validation.RequiredFieldValidator;
 import comp1206.sushi.common.Dish;
+import comp1206.sushi.server.ServerInterface;
 import comp1206.sushi.server.components.NumericTableCell;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
@@ -15,14 +16,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Duration;
-import org.controlsfx.control.PopOver;
 
 public class DishesController extends MainViewController {
 
     protected static Dish currentlySelectedDish;
-
-
     @FXML
     private AnchorPane recipe;
     @FXML
@@ -56,21 +53,15 @@ public class DishesController extends MainViewController {
     @FXML
     private JFXTextField restockAtF;
     @FXML
+    private JFXButton addNewDishButton;
+    @FXML
     private JFXButton newDishButton;
+    @FXML
+    private JFXButton deleteDishButton;
 
 
     @FXML
     public void initialize() {
-
-        RequiredFieldValidator requiredFieldValidator = new RequiredFieldValidator();
-        NumberValidator numberValidator = new NumberValidator();
-
-        nameF.getValidators().add(requiredFieldValidator);
-        descriptionF.getValidators().add(requiredFieldValidator);
-        priceF.getValidators().addAll(requiredFieldValidator, numberValidator);
-        restockValF.getValidators().addAll(requiredFieldValidator, numberValidator);
-        restockAtF.getValidators().addAll(requiredFieldValidator, numberValidator);
-
 
         //---------------------Name Column---------------------------------
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -113,50 +104,59 @@ public class DishesController extends MainViewController {
             if (newSelection != null) {
                 currentlySelectedDish = dishesTable.getSelectionModel().getSelectedItem();
                 recipeController.initIngredientList();
-
             }
         });
 
         //Opens recipe editing view and updates the list of a dish's ingredients
         editRecipeButton.setOnAction(e -> {
-            //if no dish was selected in the table, pick the first one as a default
-            if (currentlySelectedDish == null) currentlySelectedDish = server.getDishes().get(0);
-            //initialises ingredients in dish list in the popover view
-            recipeController.initIngredientList();
-            if (!recipe.isVisible()) {
-                recipe.setVisible(true);
+            if (!server.getDishes().isEmpty()) {
+                //if no dish was selected in the table, pick the first one as a default
+                if (currentlySelectedDish == null) {
+                    //currentlySelectedDish = server.getDishes().get(0);
+                    dishesTable.getSelectionModel().selectFirst();
+                }
+                //initialises ingredients in dish list in the popover view
+                recipeController.initIngredientList();
                 newDishView.setVisible(false);
-            } else {
-                recipe.setVisible(false);
-                newDishView.setVisible(true);
+                recipe.setVisible(true);
+                //cancels any cell edit in progress
+                dishesTable.edit(-1, null);
             }
+        });
 
-
+        newDishButton.setOnAction(e -> {
+            recipe.setVisible(false);
+            newDishView.setVisible(true);
             //cancels any cell edit in progress
             dishesTable.edit(-1, null);
-            //makes the table not editable to avoid conflicts with recipe editing
-            dishesTable.setEditable(false);
         });
 
-        //clicking in the table but not on a Dish cancels any ongoing edit
-        // dishesTable.focusedProperty().addListener((p, oldFocus, newFocus) -> {
-        //    if (newFocus) dishesTable.edit(-1, null);
-        // });
-        //when the popover is closed, restores the table's editing ability
-        recipe.visibleProperty().addListener((observable, aBool, NEW) -> {
-            if (!NEW)
-                newDishView.setVisible(true);
-            dishesTable.setEditable(true);
-            dishesTable.requestFocus();
+        deleteDishButton.setOnAction(actionEvent -> {
+            Dish tempSelect = dishesTable.getSelectionModel().getSelectedItem();
+            if (tempSelect != null) {
+                try {
+                    server.removeDish(tempSelect);
+                    dishesTable.getSelectionModel().clearSelection();
+                    currentlySelectedDish = null;
+                    recipe.setVisible(false);
+                    dishesTable.refresh();
+                } catch (ServerInterface.UnableToDeleteException e) {
+                    showToastNotification("Unable to delete selected dish!");
+                }
+            }
         });
-        newDishButton.setOnAction(e -> {
+
+        addNewDishButton.setOnAction(e -> {
             //if all fields are correctly filled, adds the dish to the server
-            if (descriptionF.validate() && priceF.validate() && restockValF.validate()
-                    && restockAtF.validate() && nameF.validate()) {
+            if (nameF.validate() && restockValF.validate() && priceF.validate()
+                    && descriptionF.validate() && restockAtF.validate()) {
 
                 //adds the new dish to the data
-                dishData.add(new Dish(nameF.getText(), descriptionF.getText(), Float.valueOf(priceF.getText()),
-                        Float.valueOf(restockAtF.getText()), Float.valueOf(restockValF.getText())));
+                server.addDish(nameF.getText(), descriptionF.getText(), Float.valueOf(priceF.getText()),
+                        Float.valueOf(restockAtF.getText()), Float.valueOf(restockValF.getText()));
+                dishesTable.refresh();
+                newDishView.setVisible(false);
+                showToastNotification("Dish added successfully!");
 
                 //prints the data in the server for testing
                 System.out.println("Dishes currently in the server: "
@@ -164,6 +164,14 @@ public class DishesController extends MainViewController {
                         + server.getDishes().get(server.getDishes().size() - 1));
             }
         });
+        RequiredFieldValidator evalInput = new RequiredFieldValidator();
+        NumberValidator evalNum = new NumberValidator();
+
+        nameF.getValidators().add(evalInput);
+        descriptionF.getValidators().add(evalInput);
+        priceF.getValidators().addAll(evalInput, evalNum);
+        restockValF.getValidators().addAll(evalInput, evalNum);
+        restockAtF.getValidators().addAll(evalInput, evalNum);
     }
 
 }

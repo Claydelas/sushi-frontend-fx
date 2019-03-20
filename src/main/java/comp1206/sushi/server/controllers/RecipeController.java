@@ -74,8 +74,9 @@ public class RecipeController extends DishesController {
         quantitySlider.valueProperty().addListener(((observableValue, number, newNumber) -> {
             if (currentlySelectedIngredient != null && !quantitySlider.isDisable())
                 server.addIngredientToDish(currentlySelectedDish, currentlySelectedIngredient, newNumber);
-            System.out.println(server.getRecipe(currentlySelectedDish));
 
+            //testing
+            System.out.println(server.getRecipe(currentlySelectedDish));
         }));
         confirmRecipe.setOnAction(e -> recipeview.setVisible(false));
         if (currentlySelectedIngredient == null) quantitySlider.setDisable(true);
