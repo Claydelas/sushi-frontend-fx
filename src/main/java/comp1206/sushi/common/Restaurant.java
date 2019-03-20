@@ -1,21 +1,23 @@
 package comp1206.sushi.common;
 
+import javafx.beans.property.SimpleStringProperty;
+
 public class Restaurant {
 
-	private String name;
+	private SimpleStringProperty name;
 	private Postcode location;
 
 	public Restaurant(String name, Postcode location) {
-		this.name = name;
+		this.name = new SimpleStringProperty(name);
 		this.location = location;
 	}
 	
 	public String getName() {
-		return name;
+		return name.getValue();
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.name.setValue(name);
 	}
 
 	public Postcode getLocation() {

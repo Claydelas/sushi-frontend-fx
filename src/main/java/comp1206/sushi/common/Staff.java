@@ -1,41 +1,42 @@
 package comp1206.sushi.common;
 
-import comp1206.sushi.common.Staff;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 public class Staff extends Model {
 
-	private String name;
-	private String status;
-	private Number fatigue;
+	private SimpleStringProperty name;
+	private SimpleStringProperty status;
+	private SimpleIntegerProperty fatigue;
 	
 	public Staff(String name) {
-		this.setName(name);
-		this.setFatigue(0);
+		this.name = new SimpleStringProperty(name);
+		this.fatigue = new SimpleIntegerProperty(0);
 	}
 
 	public String getName() {
-		return name;
+		return name.getValue();
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.name.setValue(name);
 	}
 
 	public Number getFatigue() {
-		return fatigue;
+		return fatigue.getValue();
 	}
 
 	public void setFatigue(Number fatigue) {
-		this.fatigue = fatigue;
+		this.fatigue.setValue(fatigue);
 	}
 
 	public String getStatus() {
-		return status;
+		return status.getValue();
 	}
 
 	public void setStatus(String status) {
 		notifyUpdate("status",this.status,status);
-		this.status = status;
+		this.status.setValue(status);
 	}
 
 }

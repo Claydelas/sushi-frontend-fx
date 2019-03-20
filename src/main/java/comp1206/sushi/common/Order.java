@@ -1,18 +1,17 @@
 package comp1206.sushi.common;
 
+import javafx.beans.property.SimpleStringProperty;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Random;
-
-import comp1206.sushi.common.Order;
 
 public class Order extends Model {
 
-	private String status;
-	
+	private SimpleStringProperty status;
+
 	public Order() {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/YYYY HH:mm:ss");  
-		LocalDateTime now = LocalDateTime.now();  
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/YYYY HH:mm:ss");
+		LocalDateTime now = LocalDateTime.now();
 		this.name = dtf.format(now);
 	}
 
@@ -26,12 +25,12 @@ public class Order extends Model {
 	}
 
 	public String getStatus() {
-		return status;
+		return status.getValue();
 	}
 
 	public void setStatus(String status) {
 		notifyUpdate("status",this.status,status);
-		this.status = status;
+		this.status.setValue(status);
 	}
 
 }

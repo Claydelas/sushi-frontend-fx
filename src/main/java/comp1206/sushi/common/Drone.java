@@ -1,87 +1,87 @@
 package comp1206.sushi.common;
 
-import comp1206.sushi.common.Drone;
+import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 public class Drone extends Model {
 
-	private Number speed;
-	private Number progress;
-	
-	private Number capacity;
-	private Number battery;
-	
-	private String status;
-	
-	private Postcode source;
-	private Postcode destination;
+    private SimpleFloatProperty speed;
+    private SimpleFloatProperty progress;
 
-	public Drone(Number speed) {
-		this.setSpeed(speed);
-		this.setCapacity(1);
-		this.setBattery(100);
-	}
+    private SimpleFloatProperty capacity;
+    private SimpleFloatProperty battery;
 
-	public Number getSpeed() {
-		return speed;
-	}
+    private SimpleStringProperty status;
 
-	
-	public Number getProgress() {
-		return progress;
-	}
-	
-	public void setProgress(Number progress) {
-		this.progress = progress;
-	}
-	
-	public void setSpeed(Number speed) {
-		this.speed = speed;
-	}
-	
-	@Override
-	public String getName() {
-		return "Drone (" + getSpeed() + " speed)";
-	}
+    private Postcode source;
+    private Postcode destination;
 
-	public Postcode getSource() {
-		return source;
-	}
+    public Drone(Number speed) {
+        this.speed = new SimpleFloatProperty(speed.floatValue());
+        this.capacity = new SimpleFloatProperty(1);
+        this.battery = new SimpleFloatProperty(100);
+    }
 
-	public void setSource(Postcode source) {
-		this.source = source;
-	}
+    public Number getSpeed() {
+        return speed.getValue();
+    }
 
-	public Postcode getDestination() {
-		return destination;
-	}
+    public void setSpeed(Number speed) {
+        this.speed.setValue(speed);
+    }
 
-	public void setDestination(Postcode destination) {
-		this.destination = destination;
-	}
+    public Number getProgress() {
+        return progress.getValue();
+    }
 
-	public Number getCapacity() {
-		return capacity;
-	}
+    public void setProgress(Number progress) {
+        this.progress.setValue(progress);
+    }
 
-	public void setCapacity(Number capacity) {
-		this.capacity = capacity;
-	}
+    @Override
+    public String getName() {
+        return "Drone (" + getSpeed() + " speed)";
+    }
 
-	public Number getBattery() {
-		return battery;
-	}
+    public Postcode getSource() {
+        return source;
+    }
 
-	public void setBattery(Number battery) {
-		this.battery = battery;
-	}
+    public void setSource(Postcode source) {
+        this.source = source;
+    }
 
-	public String getStatus() {
-		return status;
-	}
+    public Postcode getDestination() {
+        return destination;
+    }
 
-	public void setStatus(String status) {
-		notifyUpdate("status",this.status,status);
-		this.status = status;
-	}
-	
+    public void setDestination(Postcode destination) {
+        this.destination = destination;
+    }
+
+    public Number getCapacity() {
+        return capacity.getValue();
+    }
+
+    public void setCapacity(Number capacity) {
+        this.capacity.setValue(capacity);
+    }
+
+    public Number getBattery() {
+        return battery.getValue();
+    }
+
+    public void setBattery(Number battery) {
+        this.battery.setValue(battery);
+    }
+
+    public String getStatus() {
+        return status.getValue();
+    }
+
+    public void setStatus(String status) {
+        notifyUpdate("status", this.status, status);
+        this.status.setValue(status);
+    }
+
 }
