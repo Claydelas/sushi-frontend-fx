@@ -1,6 +1,9 @@
 package comp1206.sushi.server.controllers;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.NumberValidator;
+import com.jfoenix.validation.RequiredFieldValidator;
 import comp1206.sushi.common.Dish;
 import comp1206.sushi.server.components.NumericTableCell;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -43,6 +46,19 @@ public class DishesController extends MainViewController {
     private JFXButton editRecipeButton;
     @FXML
     private RecipeController recipeController;
+    @FXML
+    private JFXTextField nameF;
+    @FXML
+    private JFXTextField descriptionF;
+    @FXML
+    private JFXTextField priceF;
+    @FXML
+    private JFXTextField restockValF;
+    @FXML
+    private JFXTextField restockAtF;
+    @FXML
+    private JFXButton newDishButton;
+
 
     //static method for hiding the popover from other controllers
     static void hideRecipeView() {
@@ -53,6 +69,15 @@ public class DishesController extends MainViewController {
     public void initialize() {
 
         setupRecipeView();
+        RequiredFieldValidator requiredFieldValidator = new RequiredFieldValidator();
+        NumberValidator numberValidator = new NumberValidator();
+
+        nameF.getValidators().add(requiredFieldValidator);
+        descriptionF.getValidators().add(requiredFieldValidator);
+        priceF.getValidators().addAll(requiredFieldValidator, numberValidator);
+        restockValF.getValidators().addAll(requiredFieldValidator, numberValidator);
+        restockAtF.getValidators().addAll(requiredFieldValidator, numberValidator);
+
 
         //---------------------Name Column---------------------------------
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -119,13 +144,28 @@ public class DishesController extends MainViewController {
         });
 
         //clicking in the table but not on a Dish cancels any ongoing edit
-        dishesTable.focusedProperty().addListener((p, oldFocus, newFocus) -> {
-            if (newFocus) dishesTable.edit(-1, null);
-        });
+        // dishesTable.focusedProperty().addListener((p, oldFocus, newFocus) -> {
+        //    if (newFocus) dishesTable.edit(-1, null);
+        // });
         //when the popover is closed, restores the table's editing ability
         editRecipeView.setOnHidden(e -> {
             newDishView.setVisible(true);
             dishesTable.setEditable(true);
+        });
+        newDishButton.setOnAction(e -> {
+            //if all fields are correctly filled, adds the dish to the server
+            if (descriptionF.validate() && priceF.validate() && restockValF.validate()
+                    && restockAtF.validate() && nameF.validate()) {
+
+                //adds the new dish to the data
+                dishData.add(new Dish(nameF.getText(), descriptionF.getText(), Float.valueOf(priceF.getText()),
+                        Float.valueOf(restockAtF.getText()), Float.valueOf(restockValF.getText())));
+
+                //prints the data in the server for testing
+                System.out.println("Dishes currently in the server: "
+                        + server.getDishes() + "\nNewly added: "
+                        + server.getDishes().get(server.getDishes().size()-1));
+            }
         });
     }
 

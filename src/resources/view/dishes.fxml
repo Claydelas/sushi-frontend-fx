@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -25,19 +24,14 @@
         <JFXButton fx:id="editRecipeButton" layoutX="14.0" layoutY="547.0" prefHeight="50.0" prefWidth="168.0" text="Edit Recipe">
             <fx:include fx:id="recipe" source="recipe.fxml" />
         </JFXButton>
-        <AnchorPane fx:id="newDishView" layoutX="233.0" layoutY="481.0" prefHeight="258.0" prefWidth="767.0" stylesheets="@../css/popup.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+        <AnchorPane fx:id="newDishView" layoutX="182.0" layoutY="462.0" prefHeight="315.0" prefWidth="815.0" stylesheets="@../css/popup.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
             <children>
-                <Label focusTraversable="false" layoutX="44.0" layoutY="35.0" prefHeight="29.0" prefWidth="200.0" text="Name" wrapText="true" />
-                <Label focusTraversable="false" layoutX="44.0" layoutY="142.0" prefHeight="29.0" prefWidth="200.0" text="Description" />
-                <JFXButton fx:id="newDishButton" alignment="CENTER" buttonType="RAISED" layoutX="524.0" layoutY="171.0" prefHeight="45.0" prefWidth="200.0" text="Add Dish" />
-                <JFXTextField fx:id="nameFIeld" layoutX="44.0" layoutY="65.0" prefHeight="25.0" prefWidth="200.0" />
-                <Label focusTraversable="false" layoutX="284.0" layoutY="35.0" prefHeight="29.0" prefWidth="200.0" text="Restock Amount" wrapText="true" />
-                <JFXTextField fx:id="restockAmountField" layoutX="284.0" layoutY="65.0" prefHeight="25.0" prefWidth="200.0" />
-                <JFXTextField fx:id="descriptionField" layoutX="44.0" layoutY="172.0" prefHeight="25.0" prefWidth="200.0" />
-                <Label focusTraversable="false" layoutX="284.0" layoutY="142.0" prefHeight="29.0" prefWidth="200.0" text="Restock Threshold" wrapText="true" />
-                <JFXTextField fx:id="restockThresholdField" layoutX="284.0" layoutY="172.0" prefHeight="25.0" prefWidth="200.0" />
-                <Label focusTraversable="false" layoutX="524.0" layoutY="35.0" prefHeight="29.0" prefWidth="200.0" text="Price" wrapText="true" />
-                <JFXTextField fx:id="priceField" layoutX="524.0" layoutY="65.0" prefHeight="25.0" prefWidth="200.0" />
+                <JFXButton fx:id="newDishButton" alignment="CENTER" buttonType="RAISED" layoutX="560.0" layoutY="182.0" prefHeight="45.0" prefWidth="225.0" text="Add Dish" />
+                <JFXTextField fx:id="nameF" focusColor="#b99090" labelFloat="true" layoutX="35.0" layoutY="65.0" prefHeight="25.0" prefWidth="225.0" promptText="Name" />
+                <JFXTextField fx:id="restockValF" focusColor="#b99090" labelFloat="true" layoutX="300.0" layoutY="65.0" prefHeight="25.0" prefWidth="225.0" promptText="Restock Amount" />
+                <JFXTextField fx:id="descriptionF" focusColor="#b99090" labelFloat="true" layoutX="35.0" layoutY="177.0" prefHeight="25.0" prefWidth="225.0" promptText="Description" />
+                <JFXTextField fx:id="restockAtF" focusColor="#b99090" labelFloat="true" layoutX="295.0" layoutY="177.0" prefHeight="25.0" prefWidth="225.0" promptText="Restock Threshold" />
+                <JFXTextField fx:id="priceF" focusColor="#b99090" labelFloat="true" layoutX="560.0" layoutY="65.0" prefHeight="25.0" prefWidth="225.0" promptText="Price" />
             </children>
         </AnchorPane>
     </children>

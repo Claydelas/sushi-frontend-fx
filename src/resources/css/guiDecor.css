@@ -5,6 +5,11 @@
     -fx-font-family: "Roboto Light";
     -fx-font-size: 22;
 }
+.jfx-text-field{
+    -fx-text-fill: #3c3c3c;
+    -fx-font-family: "Roboto Thin";
+    -fx-font-size: 26;
+}
 /*stage buttons style*/
 .jfx-decorator .jfx-decorator-buttons-container {
     -fx-background-color: -fx-decorator-color;

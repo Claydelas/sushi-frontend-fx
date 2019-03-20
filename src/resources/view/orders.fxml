@@ -1,17 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<AnchorPane minHeight="800.0" minWidth="1014.0" prefHeight="800.0" prefWidth="1014.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comp1206.sushi.server.controllers.OrdersController">
+    <children>
+        <TableView fx:id="dishesTable" editable="true" layoutX="14.0" layoutY="14.0" prefHeight="425.0" prefWidth="986.0" stylesheets="@../css/tableStyling.css">
+            <columns>
+                <TableColumn fx:id="name" prefWidth="75.0" text="Name" />
+                <TableColumn fx:id="description" prefWidth="75.0" text="Description" />
+                <TableColumn fx:id="price" prefWidth="75.0" text="Price" />
+                <TableColumn fx:id="restockThreshold" prefWidth="75.0" text="Restock @" />
+                <TableColumn fx:id="restockAmount" prefWidth="75.0" text="Restock By" />
+                <TableColumn fx:id="stock" editable="false" prefWidth="75.0" text="Stock" />
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>
+        </TableView>
+        <JFXButton fx:id="editRecipeButton" layoutX="14.0" layoutY="547.0" prefHeight="50.0" prefWidth="168.0" text="Edit Recipe">
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comp1206.sushi.server.controllers.OrdersController">
-   <children>
-      <TableView layoutX="200.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-        </columns>
-      </TableView>
-   </children>
+        </JFXButton>
+        <AnchorPane fx:id="newDishView" layoutX="233.0" layoutY="481.0" prefHeight="258.0" prefWidth="767.0" stylesheets="@../css/popup.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+            <children>
+                <Label focusTraversable="false" layoutX="44.0" layoutY="35.0" prefHeight="29.0" prefWidth="200.0" text="Name" wrapText="true" />
+                <Label focusTraversable="false" layoutX="44.0" layoutY="142.0" prefHeight="29.0" prefWidth="200.0" text="Description" />
+                <JFXButton fx:id="newDishButton" alignment="CENTER" buttonType="RAISED" layoutX="524.0" layoutY="171.0" prefHeight="45.0" prefWidth="200.0" text="Add Dish" />
+                <JFXTextField fx:id="nameFIeld" layoutX="44.0" layoutY="65.0" prefHeight="25.0" prefWidth="200.0" />
+                <Label focusTraversable="false" layoutX="284.0" layoutY="35.0" prefHeight="29.0" prefWidth="200.0" text="Restock Amount" wrapText="true" />
+                <JFXTextField fx:id="restockAmountField" layoutX="284.0" layoutY="65.0" prefHeight="25.0" prefWidth="200.0" />
+                <JFXTextField fx:id="descriptionField" layoutX="44.0" layoutY="172.0" prefHeight="25.0" prefWidth="200.0" />
+                <Label focusTraversable="false" layoutX="284.0" layoutY="142.0" prefHeight="29.0" prefWidth="200.0" text="Restock Threshold" wrapText="true" />
+                <JFXTextField fx:id="restockThresholdField" layoutX="284.0" layoutY="172.0" prefHeight="25.0" prefWidth="200.0" />
+                <Label focusTraversable="false" layoutX="524.0" layoutY="35.0" prefHeight="29.0" prefWidth="200.0" text="Price" wrapText="true" />
+                <JFXTextField fx:id="priceField" layoutX="524.0" layoutY="65.0" prefHeight="25.0" prefWidth="200.0" />
+            </children>
+        </AnchorPane>
+    </children>
 </AnchorPane>

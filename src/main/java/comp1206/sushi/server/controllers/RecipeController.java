@@ -61,6 +61,7 @@ public class RecipeController extends DishesController {
         //selecting an ingredient in the list updates the instance variable, updates the slider and unit label
         ingredientsInDishList.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
+                quantitySlider.setDisable(false);
                 currentlySelectedIngredient = newSelection;
                 quantitySlider.setValue(server.getRecipe(currentlySelectedDish).get(newSelection).doubleValue());
                 ingredientUnit.setText(currentlySelectedIngredient.getUnit());
@@ -68,13 +69,17 @@ public class RecipeController extends DishesController {
         });
         //listens for updates on the slider and updates the ingredient's recipe accordingly
         quantitySlider.valueProperty().addListener(((observableValue, number, newNumber) -> {
+            if(currentlySelectedIngredient != null)
             server.addIngredientToDish(currentlySelectedDish, currentlySelectedIngredient, newNumber);
+            System.out.println(server.getRecipe(currentlySelectedDish));
+
         }));
         //hides the popover and requests focus to reset the button's rippler
         confirmRecipe.setOnAction(e -> {
             hideRecipeView();
             availableIngredientsList.requestFocus();
         });
+        if (currentlySelectedIngredient == null) quantitySlider.setDisable(true);
     }
 
     //sets the right list to display the currently selected dish's recipe
