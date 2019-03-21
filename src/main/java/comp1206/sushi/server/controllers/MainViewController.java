@@ -63,6 +63,7 @@ public class MainViewController extends ServerWindow implements Refreshable {
             }
         };
         svc.setPeriod(Duration.seconds(seconds));
+        svc.setDelay(Duration.seconds(10));
         svc.start();
     }
 

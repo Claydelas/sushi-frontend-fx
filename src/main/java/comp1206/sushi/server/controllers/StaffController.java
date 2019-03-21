@@ -2,9 +2,7 @@ package comp1206.sushi.server.controllers;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.validation.NumberValidator;
 import com.jfoenix.validation.RequiredFieldValidator;
-import comp1206.sushi.common.Dish;
 import comp1206.sushi.common.Staff;
 import comp1206.sushi.server.ServerInterface;
 import javafx.beans.property.SimpleStringProperty;
@@ -98,8 +96,9 @@ public class StaffController extends MainViewController {
             }
         });
     }
+
     @Override
-    public void refresh(){
+    public void refresh() {
         staffTable.refresh();
     }
 }
