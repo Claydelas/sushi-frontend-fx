@@ -66,7 +66,7 @@ public class PostcodesController extends MainViewController {
         distance.setCellValueFactory(distance -> Bindings.createStringBinding(() -> distance.getValue().getDistance() + " km"));
         //distance.setCellValueFactory(new PropertyValueFactory<>("distance")); //change declaration to number
 
-        //wraps the dishes list in a observable one, so table listens for updates on the model
+        //wraps the dishes list in a observable one, so table listens for updates
         ObservableList<Postcode> postcodeData = FXCollections.observableList(server.getPostcodes());
         //sets the table's contents to the observable list
         postcodeTable.setItems(postcodeData);
@@ -75,7 +75,7 @@ public class PostcodesController extends MainViewController {
             if (newPostcodeView.isVisible()) newPostcodeView.setVisible(false);
             else newPostcodeView.setVisible(true);
             //testing
-            postcodeData.add(new Postcode("SO14 0AX", new Restaurant("name", new Postcode("SO14 0BD"))));
+            //postcodeData.add(new Postcode("SO14 0AX", new Restaurant("name", new Postcode("SO14 0BD"))));
         });
 
         deletePostcodeButton.setOnAction(actionEvent -> {
@@ -95,14 +95,16 @@ public class PostcodesController extends MainViewController {
         addNewPostcodeButton.setOnAction(e -> {
 
             if (postcodeF.validate()) {
+
                 String valid = postcodeF.getText();
-                        //.toLowerCase().replaceAll(" ", "");
+
                 if (server.getPostcodes().stream().anyMatch(obj -> obj.getName().equals(valid))) {
                     showToastNotification("Postcode already exists!");
                 } else {
+                    server.addPostcode(postcodeF.getText());
+                    //refreshes the table
+                    postcodeTable.setItems(FXCollections.observableList(server.getPostcodes()));
 
-                    //adds the new postcode to the data
-                    postcodeData.add(new Postcode(postcodeF.getText().toUpperCase()));
                     newPostcodeView.setVisible(false);
 
                     showToastNotification("Successfully added " + postcodeF.getText() + "!");

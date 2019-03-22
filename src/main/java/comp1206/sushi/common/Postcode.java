@@ -63,6 +63,7 @@ public class Postcode extends Model {
         try {
             URL url = new URL(sURL);
             URLConnection request = url.openConnection();
+            request.setReadTimeout(25);
             request.connect();
 
             JsonParser jp = new JsonParser();

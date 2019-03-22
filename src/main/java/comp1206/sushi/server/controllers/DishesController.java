@@ -97,7 +97,7 @@ public class DishesController extends MainViewController {
         //---------------------Stock Column---------------------------------
         stock.setCellValueFactory(stock -> new SimpleIntegerProperty(server.getDishStockLevels().get(stock.getValue()).intValue()));
 
-        //wraps the dishes list in a observable one, so table listens for updates on the model
+        //wraps the dishes list in a observable one, so table listens for updates
         ObservableList<Dish> dishData = FXCollections.observableList(server.getDishes());
         //sets the table's contents to the observable list
         dishesTable.setItems(dishData);
@@ -157,7 +157,12 @@ public class DishesController extends MainViewController {
             if (nameF.validate() && restockValF.validate() && priceF.validate()
                     && descriptionF.validate() && restockAtF.validate()) {
 
-                //adds the new dish to the data
+                /*Adds the new dish to the data
+                * Note: Could easily be replaced with server.addDish(), but this approach provides a more
+                * responsive gui, as the table doesn't need to refresh completely. The observable list
+                * will update the data in MockServer accordingly, while simultaneously adding the data
+                * to the table. Updating the observable list conforms with the MVC model and therefore
+                * doesn't bypass the server api interaction.*/
                 dishData.add(new Dish(nameF.getText(), descriptionF.getText(), Float.valueOf(priceF.getText()),
                         Float.valueOf(restockAtF.getText()), Float.valueOf(restockValF.getText())));
                 newDishView.setVisible(false);
