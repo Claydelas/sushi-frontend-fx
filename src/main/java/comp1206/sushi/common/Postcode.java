@@ -49,9 +49,18 @@ public class Postcode extends Model {
     }
 
     protected void calculateDistance(Restaurant restaurant) {
-        //This function needs implementing
         Postcode destination = restaurant.getLocation();
-        this.distance = new SimpleFloatProperty((float) convert(destination.getLatLong().get("lat"), destination.getLatLong().get("long"), getLatLong().get("lat"), getLatLong().get("long")));
+
+        double dLat = Math.toRadians(getLatLong().get("lat") - destination.getLatLong().get("lat"));
+        double dLon = Math.toRadians(getLatLong().get("long") - destination.getLatLong().get("long"));
+
+        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(Math.toRadians(destination.getLatLong().get("lat"))) * Math.cos(Math.toRadians(getLatLong().get("lat")))
+                        * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        this.distance = new SimpleFloatProperty((float) (6371 * c));
+
         System.out.println("Distance between '" + getName() + "' and '" + destination + "' -> " + getDistance() + "km");
     }
 
@@ -80,18 +89,4 @@ public class Postcode extends Model {
         } catch (Exception e) {
         }
     }
-
-    private double convert(
-            double lat1, double lng1, double lat2, double lng2) {
-        int r = 6371; // average radius of the earth in km
-        double dLat = Math.toRadians(lat2 - lat1);
-        double dLon = Math.toRadians(lng2 - lng1);
-        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
-                        * Math.sin(dLon / 2) * Math.sin(dLon / 2);
-        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        double d = r * c;
-        return d;
-    }
-
 }
