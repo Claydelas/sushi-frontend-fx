@@ -6,6 +6,7 @@ import com.google.gson.JsonParser;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -72,11 +73,10 @@ public class Postcode extends Model {
         try {
             URL url = new URL(sURL);
             URLConnection request = url.openConnection();
-            request.setReadTimeout(25);
             request.connect();
 
-            JsonParser jp = new JsonParser();
-            JsonElement root = jp.parse(new InputStreamReader((InputStream) request.getContent()));
+            JsonParser parser = new JsonParser();
+            JsonElement root = parser.parse(new InputStreamReader((InputStream) request.getContent()));
             JsonObject jsonObject = root.getAsJsonObject();
 
             System.out.println("Raw GET content: " + root);
@@ -86,7 +86,8 @@ public class Postcode extends Model {
 
             System.out.println("Mapped entries: " + latLong.entrySet());
 
-        } catch (Exception e) {
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

@@ -5,7 +5,7 @@
     -fx-font-family: "Roboto Light";
     -fx-font-size: 22;
 }
-.jfx-text-field{
+.jfx-text-field, .jfx-combo-box{
     -fx-text-fill: #3c3c3c;
     -fx-font-family: "Roboto Thin";
     -fx-font-size: 26;

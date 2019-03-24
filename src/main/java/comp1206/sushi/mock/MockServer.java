@@ -40,30 +40,31 @@ public class MockServer implements ServerInterface {
 		Postcode postcode4 = addPostcode("SO17 1TW");
 		Postcode postcode5 = addPostcode("SO17 2LB");
 		
-		Supplier supplier1 = addSupplier("Supplier 1",postcode1);
-		Supplier supplier2 = addSupplier("Supplier 2",postcode2);
-		Supplier supplier3 = addSupplier("Supplier 3",postcode3);
+		Supplier supplier1 = addSupplier("Tazaki",postcode1);
+		Supplier supplier2 = addSupplier("Tanpopo",postcode2);
+		Supplier supplier3 = addSupplier("Ichiban",postcode3);
 		
-		Ingredient ingredient1 = addIngredient("Ingredient 1","grams",supplier1,1,5);
-		Ingredient ingredient2 = addIngredient("Ingredient 2","grams",supplier2,1,5);
-		Ingredient ingredient3 = addIngredient("Ingredient 3","grams",supplier3,1,5);
+		Ingredient ingredient1 = addIngredient("Sushi Rice","grams",supplier1,1,5);
+		Ingredient ingredient2 = addIngredient("Nori","grams",supplier2,1,5);
+		Ingredient ingredient3 = addIngredient("Salmon","grams",supplier3,1,5);
 		
-		Dish dish1 = addDish("Dish 1","Dish 1",1,1,10);
-		Dish dish2 = addDish("Dish 2","Dish 2",2,1,10);
-		Dish dish3 = addDish("Dish 3","Dish 3",3,1,10);
+		Dish dish1 = addDish("Simple Sushi","Basic",1.50,1,10);
+		Dish dish2 = addDish("Maki","Salmon Maki",2,1,10);
+		Dish dish3 = addDish("Hosomaki","Tuna Hosomaki",2.50,1,10);
 		
 		orders.add(new Order());
 
-		addIngredientToDish(dish1,ingredient1,1);
-		addIngredientToDish(dish1,ingredient2,2);
-		addIngredientToDish(dish2,ingredient2,3);
-		addIngredientToDish(dish2,ingredient3,1);
-		addIngredientToDish(dish3,ingredient1,2);
-		addIngredientToDish(dish3,ingredient3,1);
+		addIngredientToDish(dish1,ingredient1,200);
+		addIngredientToDish(dish1,ingredient2,25);
+		addIngredientToDish(dish1,ingredient3,50);
+		addIngredientToDish(dish2,ingredient2,20);
+		addIngredientToDish(dish2,ingredient3,25);
+		addIngredientToDish(dish3,ingredient1,220);
+		addIngredientToDish(dish3,ingredient3,60);
 		
-		addStaff("Staff 1");
-		addStaff("Staff 2");
-		addStaff("Staff 3");
+		addStaff("John");
+		addStaff("Henry");
+		addStaff("Hamish");
 		
 		addDrone(1);
 		addDrone(2);

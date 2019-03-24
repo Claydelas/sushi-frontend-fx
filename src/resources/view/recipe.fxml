@@ -23,7 +23,7 @@
       <JFXListView fx:id="ingredientsInDishList" layoutX="257.0" layoutY="47.0" prefHeight="200.0" prefWidth="170.0" />
       <Label focusTraversable="false" layoutX="31.0" layoutY="12.0" prefHeight="29.0" prefWidth="135.0" text="Available" wrapText="true" />
       <Label focusTraversable="false" layoutX="267.0" layoutY="12.0" prefHeight="29.0" prefWidth="135.0" text="In recipe" />
-      <JFXSlider fx:id="quantitySlider" blockIncrement="50.0" layoutX="451.0" layoutY="116.0" majorTickUnit="50.0" max="250.0" min="1.0" minorTickCount="1" prefHeight="29.0" prefWidth="273.0" showTickMarks="true" value="1.0" />
+      <JFXSlider fx:id="quantitySlider" blockIncrement="50.0" layoutX="451.0" layoutY="116.0" majorTickUnit="50.0" max="300.0" min="1.0" minorTickCount="1" prefHeight="29.0" prefWidth="273.0" showTickMarks="true" value="1.0" />
       <Label fx:id="ingredientUnit" focusTraversable="false" layoutX="728.0" layoutY="113.0" text="units" />
       <JFXButton fx:id="confirmRecipe" alignment="CENTER" buttonType="RAISED" layoutX="519.0" layoutY="170.0" prefHeight="45.0" prefWidth="200.0" text="Confirm Recipe" />
    </children>

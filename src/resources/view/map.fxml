@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.lynden.gmapsfx.GoogleMapView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="800.0" minWidth="1014.0" prefHeight="800.0" prefWidth="1014.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comp1206.sushi.server.controllers.MapController">
+   <children>
+      <GoogleMapView fx:id="mapView" prefHeight="746.0" prefWidth="1014.0" />
+   </children>
+</AnchorPane>

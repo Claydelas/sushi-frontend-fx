@@ -78,6 +78,24 @@
 .table-view .menu-item .label {
     -fx-padding: 5 0 5 0;
 }
+.table-view .combo-box .cell{
+    -fx-text-fill: #3c3c3c;
+    -fx-background-color: #F4F4F4;
+}
+.table-view .combo-box .cell:selected{
+    -fx-background-color: #3c3c3c;
+    -fx-text-fill: #e6e6e6;
+}
+.table-view .combo-box .cell:selected:hover{
+    -fx-background-color: #3c3c3c;
+    -fx-text-fill: #e6e6e6;
+}
+.table-view .combo-box .arrow-button {
+    -fx-background-color: #3c3c3c;
+}
+.table-view .combo-box .arrow{
+    -fx-background-color: #e6e6e6;
+}
 
 .table-cell .text-field {
     -fx-text-alignment: center;

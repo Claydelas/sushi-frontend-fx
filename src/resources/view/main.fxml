@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<AnchorPane fx:id="mainWindowView" minHeight="800.0" minWidth="1270.0" prefHeight="800.0" prefWidth="1270.0" stylesheets="@../css/globalStyles.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comp1206.sushi.server.controllers.MainViewController">
+<AnchorPane fx:id="mainWindowView" minHeight="800.0" minWidth="1270.0" prefHeight="800.0" prefWidth="1270.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="comp1206.sushi.server.controllers.MainViewController">
     <children>
         <JFXTabPane fx:id="leftDrawer" maxHeight="1.7976931348623157E308" maxWidth="1270.0" minHeight="800.0" minWidth="1270.0" prefHeight="800.0" prefWidth="1270.0" rotateGraphic="true" side="LEFT" stylesheets="@../css/navigationDrawer.css" tabMaxHeight="256.0" tabMaxWidth="64.0" tabMinHeight="256.0" tabMinWidth="64.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <tabs>
@@ -154,6 +154,24 @@
                      </children>
                   </StackPane>
                </graphic>
+                </Tab>
+                <Tab fx:id="mapTab" closable="false">
+                    <content>
+                        <AnchorPane minHeight="800.0" minWidth="1014.0">
+                            <fx:include fx:id="Map" source="map.fxml" />
+                        </AnchorPane>
+                    </content>
+                    <graphic>
+                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                            <children>
+                                <Group>
+                                    <children>
+                                        <Label rotate="90.0" text="Overview" />
+                                    </children>
+                                </Group>
+                            </children>
+                        </StackPane>
+                    </graphic>
                 </Tab>
             </tabs>
         </JFXTabPane>

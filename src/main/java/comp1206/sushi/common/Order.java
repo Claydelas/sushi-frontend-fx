@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Order extends Model {
 
-	private SimpleStringProperty status;
+	private SimpleStringProperty status = new SimpleStringProperty();
 
 	public Order() {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/YYYY HH:mm:ss");
