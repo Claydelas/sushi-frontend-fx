@@ -28,16 +28,17 @@ public class ServerWindow extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/view/main.fxml"));
 
         //applies decor styling
-        JFXDecorator styleDecor = new JFXDecorator(primaryStage, root, false, true, true);
+        JFXDecorator styleDecor = new JFXDecorator(primaryStage, root, false, false, true);
         styleDecor.getStylesheets().add("/css/guiDecor.css");
 
-        //new scene with the custom decor 860, 700
+        //new scene with the custom decor 1270, 800
         Scene scene = new Scene(styleDecor, 1270, 800);
         scene.getStylesheets().add("http://fonts.googleapis.com/css?family=Roboto");
 
         //adjusts default styling
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setTitle(server.getRestaurantName() + " Server");
+        primaryStage.setResizable(false);
         primaryStage.setMinHeight(800);
         primaryStage.setMinWidth(1270);
 

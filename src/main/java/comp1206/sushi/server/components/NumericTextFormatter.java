@@ -7,13 +7,16 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.ParsePosition;
 
+/*based on https://stackoverflow.com/a/45201446/11214781
+ * note: it is not essential for the functionality of the GUI, merely
+ * enhances it by providing in-place validation.*/
 public class NumericTextFormatter extends TextFormatter<Number> {
 
     private static DecimalFormat format = new DecimalFormat("#.0;-#.0");
 
     public NumericTextFormatter(int minDecimals, int maxDecimals) {
         super(
-                new StringConverter<Number>() {
+                new StringConverter<>() {
                     @Override
                     public String toString(Number object) {
                         if (object == null) {

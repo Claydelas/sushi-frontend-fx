@@ -7,7 +7,6 @@ import com.jfoenix.validation.NumberValidator;
 import com.jfoenix.validation.RequiredFieldValidator;
 import comp1206.sushi.common.Dish;
 import comp1206.sushi.common.Ingredient;
-import comp1206.sushi.common.Postcode;
 import comp1206.sushi.common.Supplier;
 import comp1206.sushi.server.ServerInterface;
 import comp1206.sushi.server.components.NumericTableCell;
@@ -17,10 +16,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 public class IngredientsController extends MainViewController {
 
@@ -75,7 +77,7 @@ public class IngredientsController extends MainViewController {
         //---------------------Supplier Column---------------------------------
         supplier.setCellValueFactory(new PropertyValueFactory<>("supplier"));
         //supplier.setCellFactory(ComboBoxTableCell.forTableColumn(FXCollections.observableList(server.getSuppliers())));
-        supplier.setOnEditCommit(e -> ingredientsTable.getSelectionModel().getSelectedItem().setSupplier(e.getNewValue()));
+        //supplier.setOnEditCommit(e -> ingredientsTable.getSelectionModel().getSelectedItem().setSupplier(e.getNewValue()));
 
         //---------------------Restock Threshold Column---------------------------------
         restockThreshold.setCellValueFactory(new PropertyValueFactory<>("restockThreshold"));
@@ -105,8 +107,17 @@ public class IngredientsController extends MainViewController {
         });
 
         deleteIngredientButton.setOnAction(actionEvent -> {
+
             Ingredient tempSelect = ingredientsTable.getSelectionModel().getSelectedItem();
+
             if (tempSelect != null) {
+
+                for (Dish dish : server.getDishes()) {
+                    if (dish.getRecipe().keySet().contains(tempSelect)) {
+                        showToastNotification("This ingredient is still part of a recipe!");
+                        return;
+                    }
+                }
                 try {
                     server.removeIngredient(tempSelect);
                     ingredientsTable.getSelectionModel().clearSelection();
@@ -114,7 +125,7 @@ public class IngredientsController extends MainViewController {
                 } catch (ServerInterface.UnableToDeleteException e) {
                     showToastNotification("Remove the ingredient from all recipes first!");
                 }
-            }
+            } else showToastNotification("Select an ingredient first!");
         });
 
         addNewIngredientButton.setOnAction(e -> {

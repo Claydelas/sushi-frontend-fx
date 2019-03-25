@@ -49,6 +49,7 @@ public class Postcode extends Model {
         return this.latLong;
     }
 
+    //Haversine implementation based on https://gist.github.com/broox/2393548
     protected void calculateDistance(Restaurant restaurant) {
         Postcode destination = restaurant.getLocation();
 
@@ -65,6 +66,7 @@ public class Postcode extends Model {
         System.out.println("Distance between '" + getName() + "' and '" + destination + "' -> " + getDistance() + "km");
     }
 
+    //based on idea by https://stackoverflow.com/a/21964051/11214781
     protected void calculateLatLong() {
 
         this.latLong = new HashMap<>();

@@ -4,24 +4,17 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.RegexValidator;
 import com.jfoenix.validation.RequiredFieldValidator;
-import comp1206.sushi.common.Dish;
 import comp1206.sushi.common.Postcode;
-import comp1206.sushi.common.Restaurant;
-import comp1206.sushi.common.Staff;
 import comp1206.sushi.server.ServerInterface;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
-
-import javax.naming.Binding;
 
 public class PostcodesController extends MainViewController {
 
@@ -74,22 +67,24 @@ public class PostcodesController extends MainViewController {
         newPostcodeButton.setOnAction(e -> {
             if (newPostcodeView.isVisible()) newPostcodeView.setVisible(false);
             else newPostcodeView.setVisible(true);
-            //testing
-            //postcodeData.add(new Postcode("SO14 0AX", new Restaurant("name", new Postcode("SO14 0BD"))));
         });
 
         deletePostcodeButton.setOnAction(actionEvent -> {
             Postcode tempSelect = postcodeTable.getSelectionModel().getSelectedItem();
             if (tempSelect != null) {
-                try {
-                    server.removePostcode(tempSelect);
-                    postcodeTable.getSelectionModel().clearSelection();
-                    newPostcodeView.setVisible(false);
-                    postcodeTable.refresh();
-                } catch (ServerInterface.UnableToDeleteException e) {
-                    showToastNotification("Postcode is still in use!");
+                if (server.getSuppliers().stream().noneMatch(supplier -> supplier.getPostcode().equals(tempSelect))) {
+                    try {
+                        server.removePostcode(tempSelect);
+                        postcodeTable.getSelectionModel().clearSelection();
+                        newPostcodeView.setVisible(false);
+                        postcodeTable.refresh();
+                    } catch (ServerInterface.UnableToDeleteException e) {
+                        showToastNotification("Postcode is still in use!");
+                    }
                 }
+                else showToastNotification("Postcode is still in use by a supplier!");
             }
+            else showToastNotification("Please select a postcode first!");
         });
 
         addNewPostcodeButton.setOnAction(e -> {
@@ -98,7 +93,7 @@ public class PostcodesController extends MainViewController {
 
                 String valid = postcodeF.getText();
 
-                if (server.getPostcodes().stream().anyMatch(obj -> obj.getName().equals(valid))) {
+                if (server.getPostcodes().stream().anyMatch(postcode -> postcode.getName().equals(valid))) {
                     showToastNotification("Postcode already exists!");
                 } else {
                     server.addPostcode(postcodeF.getText());

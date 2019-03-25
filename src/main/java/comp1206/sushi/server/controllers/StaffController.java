@@ -43,9 +43,8 @@ public class StaffController extends MainViewController {
 
         //---------------------Name Column---------------------------------
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        //off-spec, modifies directly due to lack of api implementation
-        name.setCellFactory(TextFieldTableCell.forTableColumn());
-        name.setOnEditCommit(e -> staffTable.getSelectionModel().getSelectedItem().setName(e.getNewValue()));
+        //name.setCellFactory(TextFieldTableCell.forTableColumn());
+        //name.setOnEditCommit(e -> staffTable.getSelectionModel().getSelectedItem().setName(e.getNewValue()));
 
         //---------------------Status Column---------------------------------
         status.setCellValueFactory(staff -> new SimpleStringProperty(server.getStaffStatus(staff.getValue())));

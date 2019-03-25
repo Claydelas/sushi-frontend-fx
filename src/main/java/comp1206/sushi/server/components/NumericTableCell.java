@@ -9,6 +9,9 @@ import javafx.util.converter.NumberStringConverter;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 
+/*based on https://stackoverflow.com/a/45201446/11214781
+ * note: it is not essential for the functionality of the GUI, merely
+ * enhances it by providing in-place validation.*/
 public class NumericTableCell<T> extends TableCell<T, Number> {
 
     private TextField textField;

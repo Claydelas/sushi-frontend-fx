@@ -1,12 +1,13 @@
 package comp1206.sushi.common;
 
 import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Drone extends Model {
 
-    private SimpleFloatProperty speed;
-    private SimpleFloatProperty progress;
+    private SimpleIntegerProperty speed;
+    private SimpleFloatProperty progress = new SimpleFloatProperty();
 
     private SimpleFloatProperty capacity;
     private SimpleFloatProperty battery;
@@ -17,7 +18,7 @@ public class Drone extends Model {
     private Postcode destination;
 
     public Drone(Number speed) {
-        this.speed = new SimpleFloatProperty(speed.floatValue());
+        this.speed = new SimpleIntegerProperty(speed.intValue());
         this.capacity = new SimpleFloatProperty(1);
         this.battery = new SimpleFloatProperty(100);
     }
