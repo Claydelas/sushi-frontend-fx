@@ -1,13 +1,11 @@
 package comp1206.sushi.common;
 
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Supplier extends Model {
 
 	private SimpleStringProperty name;
 	private Postcode postcode;
-	private SimpleDoubleProperty distance;
 
 	public Supplier(String name, Postcode postcode) {
 		this.name = new SimpleStringProperty(name);

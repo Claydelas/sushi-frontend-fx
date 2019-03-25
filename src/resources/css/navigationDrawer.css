@@ -21,7 +21,6 @@
 .jfx-tab-pane .tab:selected
 {
     -fx-background-color: #3c3c3c;
-    //-fx-background-color: rgba(0,0,0,0.04);
 }
 
 /*.tab .tab-label {

@@ -81,10 +81,8 @@ public class PostcodesController extends MainViewController {
                     } catch (ServerInterface.UnableToDeleteException e) {
                         showToastNotification("Postcode is still in use!");
                     }
-                }
-                else showToastNotification("Postcode is still in use by a supplier!");
-            }
-            else showToastNotification("Please select a postcode first!");
+                } else showToastNotification("Postcode is still in use by a supplier!");
+            } else showToastNotification("Please select a postcode first!");
         });
 
         addNewPostcodeButton.setOnAction(e -> {
@@ -117,6 +115,6 @@ public class PostcodesController extends MainViewController {
 
     @Override
     public void refresh() {
-        //dishesTable.refresh();
+        postcodeTable.refresh();
     }
 }

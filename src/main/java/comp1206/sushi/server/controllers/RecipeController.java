@@ -92,4 +92,8 @@ public class RecipeController extends DishesController {
     private void updateIngredientList() {
         ingredientsInDishList.setItems(FXCollections.observableArrayList(ingredientsInDish));
     }
+    public void refresh(){
+        ObservableList<Ingredient> availableIngredients = FXCollections.observableList(server.getIngredients());
+        availableIngredientsList.setItems(availableIngredients);
+    }
 }

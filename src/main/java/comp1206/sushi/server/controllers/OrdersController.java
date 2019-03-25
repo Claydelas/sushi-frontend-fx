@@ -2,6 +2,7 @@ package comp1206.sushi.server.controllers;
 
 import com.jfoenix.controls.JFXButton;
 import comp1206.sushi.common.Order;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -18,9 +19,9 @@ public class OrdersController extends MainViewController {
     @FXML
     private TableColumn<Order, String> date;
     @FXML
-    private TableColumn<Order, Number> distance;
+    private TableColumn<Order, String> distance;
     @FXML
-    private TableColumn<Order, Number> price;
+    private TableColumn<Order, String> price;
     @FXML
     private TableColumn<Order, String> status;
     @FXML
@@ -36,10 +37,12 @@ public class OrdersController extends MainViewController {
         status.setCellValueFactory(order -> new SimpleStringProperty(server.getOrderStatus(order.getValue())));
 
         //---------------------Distance Column---------------------------------
-        distance.setCellValueFactory(order -> new SimpleFloatProperty(server.getOrderDistance(order.getValue()).floatValue()));
+        distance.setCellValueFactory(order -> Bindings.createStringBinding(() -> server.getOrderDistance(order.getValue()) + " km"));
+        //distance.setCellValueFactory(order -> new SimpleFloatProperty(server.getOrderDistance(order.getValue()).floatValue()));
 
         //---------------------Price Column---------------------------------
-        price.setCellValueFactory(order -> new SimpleFloatProperty(server.getOrderCost(order.getValue()).floatValue()));
+        price.setCellValueFactory(order -> Bindings.createStringBinding(() -> server.getOrderCost(order.getValue()) + " £"));
+        //price.setCellValueFactory(order -> new SimpleFloatProperty(server.getOrderCost(order.getValue()).floatValue()));
 
         ObservableList<Order> ordersData = FXCollections.observableList(server.getOrders());
         ordersTable.setItems(ordersData);

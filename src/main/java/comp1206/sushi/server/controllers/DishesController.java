@@ -69,20 +69,20 @@ public class DishesController extends MainViewController {
         //---------------------Name Column---------------------------------
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         //off-spec, modifies directly due to lack of api implementation
-        name.setCellFactory(TextFieldTableCell.forTableColumn());
-        name.setOnEditCommit(e -> dishesTable.getSelectionModel().getSelectedItem().setName(e.getNewValue()));
+        //name.setCellFactory(TextFieldTableCell.forTableColumn());
+        //name.setOnEditCommit(e -> dishesTable.getSelectionModel().getSelectedItem().setName(e.getNewValue()));
 
         //---------------------Description Column---------------------------------
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
         //off-spec, modifies directly due to lack of api implementation
-        description.setCellFactory(TextFieldTableCell.forTableColumn());
-        description.setOnEditCommit(e -> dishesTable.getSelectionModel().getSelectedItem().setDescription(e.getNewValue()));
+        //description.setCellFactory(TextFieldTableCell.forTableColumn());
+        //description.setOnEditCommit(e -> dishesTable.getSelectionModel().getSelectedItem().setDescription(e.getNewValue()));
 
         //---------------------Price Column---------------------------------
         price.setCellValueFactory(new PropertyValueFactory<>("price"));
         //off-spec, modifies directly due to lack of api implementation
-        price.setCellFactory(column -> new NumericTableCell<>());
-        price.setOnEditCommit(e -> dishesTable.getSelectionModel().getSelectedItem().setPrice(e.getNewValue()));
+        //price.setCellFactory(column -> new NumericTableCell<>());
+        //price.setOnEditCommit(e -> dishesTable.getSelectionModel().getSelectedItem().setPrice(e.getNewValue()));
 
         //---------------------Restock Threshold Column---------------------------------
         restockThreshold.setCellValueFactory(new PropertyValueFactory<>("restockThreshold"));
@@ -120,6 +120,7 @@ public class DishesController extends MainViewController {
                 }
                 //initialises ingredients in dish list in the popover view
                 recipeViewController.initIngredientList();
+                recipeViewController.refresh();
                 if (recipeView.isVisible()) recipeView.setVisible(false);
                 else recipeView.setVisible(true);
                 newDishView.setVisible(false);

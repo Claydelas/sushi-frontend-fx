@@ -10,7 +10,7 @@
     <children>
         <TableView fx:id="dishesTable" editable="true" layoutX="14.0" layoutY="5" prefHeight="425.0" prefWidth="986.0" stylesheets="@../css/tableStyling.css">
             <columns>
-                <TableColumn fx:id="name" prefWidth="75.0" text="Name" />
+                <TableColumn fx:id="name" prefWidth="75.0" text="Dish" />
                 <TableColumn fx:id="description" prefWidth="75.0" text="Description" />
                 <TableColumn fx:id="price" prefWidth="75.0" text="Price" />
                 <TableColumn fx:id="restockThreshold" prefWidth="75.0" text="Restock @" />

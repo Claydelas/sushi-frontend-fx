@@ -20,10 +20,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
 public class IngredientsController extends MainViewController {
 
     @FXML
@@ -66,13 +62,13 @@ public class IngredientsController extends MainViewController {
 
         //---------------------Name Column---------------------------------
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        name.setCellFactory(TextFieldTableCell.forTableColumn());
-        name.setOnEditCommit(e -> ingredientsTable.getSelectionModel().getSelectedItem().setName(e.getNewValue()));
+        //name.setCellFactory(TextFieldTableCell.forTableColumn());
+        //name.setOnEditCommit(e -> ingredientsTable.getSelectionModel().getSelectedItem().setName(e.getNewValue()));
 
         //---------------------Unit Column---------------------------------
         unit.setCellValueFactory(new PropertyValueFactory<>("unit"));
-        unit.setCellFactory(TextFieldTableCell.forTableColumn());
-        unit.setOnEditCommit(e -> ingredientsTable.getSelectionModel().getSelectedItem().setUnit(e.getNewValue()));
+        //unit.setCellFactory(TextFieldTableCell.forTableColumn());
+        //unit.setOnEditCommit(e -> ingredientsTable.getSelectionModel().getSelectedItem().setUnit(e.getNewValue()));
 
         //---------------------Supplier Column---------------------------------
         supplier.setCellValueFactory(new PropertyValueFactory<>("supplier"));
@@ -162,5 +158,9 @@ public class IngredientsController extends MainViewController {
     @Override
     public void refresh() {
         ingredientsTable.refresh();
+    }
+
+    public void clearSupplier(){
+        supplierF.getSelectionModel().clearSelection();
     }
 }

@@ -2,6 +2,7 @@ package comp1206.sushi.server.controllers;
 
 import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXSnackbarLayout;
+import com.jfoenix.controls.JFXTabPane;
 import comp1206.sushi.server.ServerWindow;
 import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Task;
@@ -14,6 +15,8 @@ public class MainViewController extends ServerWindow implements Refreshable {
     private static JFXSnackbar snackbar;
     @FXML
     private AnchorPane mainWindowView;
+    @FXML
+    private JFXTabPane leftDrawer;
     @FXML
     private DishesController DishesController;
     @FXML
@@ -45,6 +48,12 @@ public class MainViewController extends ServerWindow implements Refreshable {
         controllers = new MainViewController[]{DishesController, DronesController,
                 IngredientsController, OrdersController, PostcodesController,
                 StaffController, SuppliersController, UsersController};
+
+        leftDrawer.getSelectionModel().selectedItemProperty().addListener((val, tab, newtab) -> {
+            SuppliersController.clearPostcode();
+            IngredientsController.clearSupplier();
+        });
+
         startRefreshService(10);
     }
 

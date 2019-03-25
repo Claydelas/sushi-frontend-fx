@@ -69,6 +69,8 @@ public class MockServer implements ServerInterface {
 		addDrone(1);
 		addDrone(2);
 		addDrone(3);
+
+		users.add(new User("johnatan99","kms","Salisbury Road",postcode4));
 	}
 	
 	@Override
