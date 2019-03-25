@@ -74,7 +74,7 @@ public class DronesController extends MainViewController {
                     newDroneView.setVisible(false);
                     dronesTable.refresh();
                 } catch (ServerInterface.UnableToDeleteException e) {
-                    showToastNotification("Cannot remove a drone while it's in flight!");
+                    showToastNotification("Cannot remove a drone while it's in-flight!");
                 }
             }
         });
